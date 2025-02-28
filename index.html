@@ -324,87 +324,144 @@
     </section>
     <!--Resume Section-->
 
-    <section class="section bg-custom-gray" id="publish">
+    <section class="section" id="publish">
+        <style>
+            .product-card {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px;
+                margin-bottom: 30px;
+                transition: transform 0.3s;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .product-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 5px;
+                margin-bottom: 15px;
+            }
+
+            .product-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            .product-category {
+                color: #666;
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .product-button {
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                color: white;
+                border: none;
+                padding: 10px 25px;
+                border-radius: 25px;
+                font-weight: 500;
+                transition: all 0.3s;
+                width: 100%;
+                margin-top: auto;
+            }
+
+            .product-button:hover {
+                background: linear-gradient(45deg, #ff8080, #ff4d4d);
+                transform: scale(1.05);
+            }
+        </style>
+
         <div class="container">
-            <h1 class="mb-5"><span class="text-danger">Publish</span> Products</h1>
-            <div class="row align-items-center">
-                <div class="col-md-6 col-lg-3 ">
-                    <div class="price-card text-center mb-4">
-                        <h5 class="price-card-title">Measuring Tool</h5>
+            <h1 class="mb-5"><span class="text-danger">Published</span> Products</h1>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <!-- <img src="assets/imgs/products/measuring-tool.jpg" class="product-image" alt="Measuring Tool" onerror="this.src='assets/imgs/coming-soon.jpg'"> -->
+                        <h3 class="product-title">Measuring Tool</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/measuring-tool-226340')">View Details</button>
+                    </div>
+                </div>
 
-                        <span class="text-muted">Unity Asset</span>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/c20771b4-ae93-4a6a-80db-46d8b6b0a32b.jpg" class="product-image" alt="Folder In Hierarchy"> -->
+                        <h3 class="product-title">Folder In Hierarchy</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-246762')">View Details</button>
+                    </div>
+                </div>
 
-                        <!-- <h3 class="price-card-title">Free</h3>
-                    <div class="price-card-cost">
-                        <sup class="ti-money"></sup>
-                        <span class="num">0</span>
-                        <span class="date">MO</span>
-                    </div>
-                    <ul class="list">
-                        <li class="list-item">5 <span class="text-muted">Project</span></li>
-                        <li class="list-item">1GB <span class="text-muted">Storage</span></li>
-                        <li class="list-item"><span class="text-muted">No Domain</span></li>
-                        <li class="list-item">1 <span class="text-muted">User</span></li>
-                    </ul> -->
-                        <button class="btn btn-success btn-rounded w-lg"
-                            onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/measuring-tool-226340')">Visit</button>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/12537db1-380c-4797-8e5e-62038d3c39d7.jpg" class="product-image" alt="Folder In Hierarchy Pro"> -->
+                        <h3 class="product-title">Folder In Hierarchy Pro</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-pro-246760')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Folder In Hierarchy</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-246762')">Visit</button>
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/e21c9dba-c2de-4f23-85c4-cab3e2f75e68.jpg" class="product-image" alt="Child Search"> -->
+                        <h3 class="product-title">Child Search</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/child-search-272636')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Folder In Hierarchy pro</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-pro-246760')">Visit</button>
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/efb6d5cc-12da-498d-bdc0-8f4dce028767.jpg" class="product-image" alt="Quick Measure"> -->
+                        <h3 class="product-title">Quick Measure</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/quick-measure-311569')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Child Search</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/child-search-272636')">Visit</button>
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/b4a3fdf5-0590-4da7-989a-9ddec17a5fef.jpg" class="product-image" alt="Scene View Bookmarks"> -->
+                        <h3 class="product-title">Scene View Bookmarks</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312499')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Quick Measure</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/quick-measure-311569')">Visit</button>
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/ef3a2c4d-1a3e-4899-951e-21f87708b16d.jpg" class="product-image" alt="V3Viz"> -->
+                        <h3 class="product-title">V3Viz</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312603')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Scene View Bookmarks</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/slug/312499')">Visit</button>
+                    <div class="product-card">
+                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/12d77a18-f395-40fe-bfe7-a5ac020bde32.jpg" class="product-image" alt="Searchable Inspector"> -->
+                        <h3 class="product-title">Searchable Inspector</h3>
+                        <div class="product-category">Unity Asset</div>
+                        <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312606')">View Details</button>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">V3Viz</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/slug/312603')">Visit</button>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Searchable Inspector</h3>
-                        <span class="text-muted">Unity Asset</span>
-                        <button class="btn btn-success btn-rounded w-lg" onclick="window.open('https://assetstore.unity.com/packages/slug/312606')">Visit</button>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="price-card text-center mb-4">
-                        <h3 class="price-card-title">Under Development</h3>
-                        <span class="text-muted">undefine</span>
-                        <button class="btn btn-dark btn-rounded w-lg" onclick="window.open('#')">Loading</button>
+                    <div class="product-card">
+                        <!-- <img src="assets/imgs/coming-soon.jpg" class="product-image" alt="Coming Soon"> -->
+                        <h3 class="product-title">Under Development</h3>
+                        <div class="product-category">Coming Soon</div>
+                        <button class="product-button" style="background: #6c757d;" disabled>Loading...</button>
                     </div>
                 </div>
             </div>
