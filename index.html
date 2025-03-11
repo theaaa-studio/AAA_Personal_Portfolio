@@ -12,41 +12,98 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap 5 + custom styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="assets/css/johndoe.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/experience.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+    <link rel="stylesheet" href="assets/css/gallery.css">
+    <link rel="stylesheet" href="assets/css/thanks.css">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="40" id="home">
 
     <header class="header">
-        <div class="container">
-            <ul class="social-icons pt-3">
-                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light"
+        <div class="header-container container">
+            <ul class="social-icons">
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
                         href="https://www.facebook.com/abid.al.aqib/"><i class="ti-facebook" aria-hidden="true"></i></a>
                 </li>
-                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light" href="https://twitter.com/abid_al_aqib"><i
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://twitter.com/abid_al_aqib"><i
                             class="ti-twitter" aria-hidden="true"></i></a></li>
-                <!-- <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube" aria-hidden="true"></i></a></li> -->
-                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light"
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
                         href="https://www.linkedin.com/in/abid-al-aqib/"><i class="ti-linkedin"
                             aria-hidden="true"></i></a></li>
-                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light"
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
                         href="https://www.instagram.com/abid.al.aqib/"><i class="ti-instagram"
                             aria-hidden="true"></i></a></li>
 
-                <!-- <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link text-light" href="https://github.com/theaaa-studio"><i class="ti-github" aria-hidden="true"></i></a></li> -->
+                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://github.com/theaaa-studio"><i class="ti-github" aria-hidden="true"></i></a></li>
             </ul>
             <div class="header-content">
                 <h4 class="header-subtitle">Hello, I am</h4>
                 <h1 class="header-title">The AAA</h1>
                 <h6 class="header-mono">Abid Al Aqib</h6>
             </div>
+            
+            <a href="#about" class="scroll-down-btn"><i class="ti-arrow-down"></i></a>
         </div>
+        
+        <script>
+            // Create floating particles for interactive background
+            document.addEventListener('DOMContentLoaded', function() {
+                const header = document.querySelector('.header');
+                const particleCount = 15; // Number of particles
+                
+                for (let i = 0; i < particleCount; i++) {
+                    createParticle(header);
+                }
+                
+                // Add scroll animation for header elements
+                const scrollDownBtn = document.querySelector('.scroll-down-btn');
+                scrollDownBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const aboutSection = document.querySelector('#about');
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            function createParticle(container) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5-15px
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // Random animation duration
+                const animDuration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${animDuration}s`;
+                
+                // Random delay
+                const animDelay = Math.random() * 5;
+                particle.style.animationDelay = `${animDelay}s`;
+                
+                // Random opacity
+                const opacity = Math.random() * 0.3 + 0.1;
+                particle.style.opacity = opacity;
+                
+                container.appendChild(particle);
+            }
+        </script>
     </header>
 
-
-
-
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-bs-spy="affix" data-bs-offset-top="510">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" data-bs-spy="affix" data-bs-offset-top="510">
         <div class="container">
             <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -64,17 +121,20 @@
                     <li class="nav-item">
                         <a href="#expreance" class="nav-link">Experience</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="#publishAssets" class="nav-link">Publish Games</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a href="#publish" class="nav-link">Publish</a>
+                    </li>
+                    
                 </ul>
                 
                 <ul class="navbar-nav brand">
+                    <!-- <div class="brand-img-container">
                     <img src="assets/imgs/avator3.jpg" alt="Avatar" class="brand-img">
-                    <li class="brand-txt">
+                    </div> -->
+                    <li class="">
                         <h3 class="brand-title">The AAA</h3>
                         <div class="brand-subtitle">Abid Al Aqib</div>
-                    </li>
+                    </li> 
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -86,11 +146,361 @@
                     <li class="nav-item">
                         <a href="#gallery" class="nav-link">Gallery</a>
                     </li>
-
+                    <li class="nav-item theme-switch">
+                        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                            <i class="ti-shine light-icon"></i> <!-- Light mode icon -->
+                            <i class="ti-shine dark-icon"></i> <!-- Dark mode icon -->
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Theme Switcher CSS and Script -->
+    <style>
+        :root {
+            /* Light theme variables (default) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-muted: #777777;
+            --border-color: rgba(0,0,0,0.05);
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            --accent-color: #ff4d4d;
+            --accent-gradient: linear-gradient(45deg, #ff4d4d, #ff8080);
+            --header-overlay: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+            --section-bg: #ffffff;
+            --section-alt-bg: #f8f9fa;
+            --thanks-bg: linear-gradient(45deg, #333, #222);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme variables - more consistent dark colors */
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #252525;
+            --text-primary: #f5f5f5;
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --border-color: rgba(255,255,255,0.08);
+            --card-bg: #1a1a1a;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            --accent-color: #ff6e6e;
+            --accent-gradient: linear-gradient(45deg, #ff6e6e, #ffa0a0);
+            --header-overlay: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.7));
+            --section-bg: #121212;
+            --section-alt-bg: #1a1a1a;
+            --thanks-bg: linear-gradient(45deg, #121212, #0a0a0a);
+            --card-hover-bg: #252525;
+            --dark-button-text: #121212;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .section {
+            background-color: var(--section-bg);
+        }
+
+        .bg-custom-gray {
+            background-color: var(--section-alt-bg);
+        }
+
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-tertiary);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Increased duration for smoother transition */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .theme-toggle-btn i {
+            font-size: 18px;
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Added smooth bezier curve transition */
+        }
+        
+        /* Fixed icon colors with smooth transitions */
+        .light-icon {
+            opacity: 0;
+            transform: translateY(-20px) rotate(-180deg); /* Added rotation for smoother animation */
+            color: white;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-icon {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+            color: #333;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark mode icon states with smooth transitions */
+        [data-theme="dark"] .light-icon {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+            color: white !important; /* Explicitly set to white in dark mode with !important */
+        }
+
+        [data-theme="dark"] .dark-icon {
+            opacity: 0;
+            transform: translateY(20px) rotate(180deg);
+        }
+
+        /* Hover effects in light mode */
+        .theme-toggle-btn:hover .dark-icon {
+            color: white; /* White on hover (gradient background) */
+        }
+
+        /* Hover effects in dark mode */
+        [data-theme="dark"] .theme-toggle-btn:hover .light-icon {
+            color: white !important; /* White on hover (gradient background) */
+        }
+
+        /* Navbar in dark mode */
+        [data-theme="dark"] .navbar {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .nav-link {
+            color: var(--text-primary) !important;
+        }
+        
+        [data-theme="dark"] .nav-link:hover {
+            color: var(--accent-color) !important;
+            background: rgba(255, 110, 110, 0.1);
+        }
+
+        [data-theme="dark"] .brand-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .brand-subtitle {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .navbar-toggler {
+            background: linear-gradient(135deg, #252525, #333333);
+        }
+
+        [data-theme="dark"] .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        
+        [data-theme="dark"] .navbar-collapse {
+            background: rgba(26, 26, 26, 0.98);
+        }
+
+        /* Cards in dark mode */
+        [data-theme="dark"] .about-card,
+        [data-theme="dark"] .experience-card,
+        [data-theme="dark"] .product-card,
+        [data-theme="dark"] .extra-card {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+        
+        /* Card hover effects */
+        [data-theme="dark"] .about-card:hover,
+        [data-theme="dark"] .experience-card:hover,
+        [data-theme="dark"] .product-card:hover,
+        [data-theme="dark"] .extra-card:hover {
+            background-color: var(--card-hover-bg);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        [data-theme="dark"] .about-card h3,
+        [data-theme="dark"] .experience-title,
+        [data-theme="dark"] .experience-job-title,
+        [data-theme="dark"] .product-title,
+        [data-theme="dark"] .extra-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .subtitle,
+        [data-theme="dark"] .experience-description,
+        [data-theme="dark"] .experience-position,
+        [data-theme="dark"] .product-category,
+        [data-theme="dark"] .extra-item-title,
+        [data-theme="dark"] .extra-item-small {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .experience-date,
+        [data-theme="dark"] .extra-item-date {
+            color: var(--text-muted);
+        }
+
+        [data-theme="dark"] .experience-icon-container,
+        [data-theme="dark"] .extra-icon-container {
+            background: linear-gradient(135deg, #252525, #333333);
+        }
+        
+        [data-theme="dark"] .experience-card:hover .experience-icon-container,
+        [data-theme="dark"] .extra-card:hover .extra-icon-container {
+            background: linear-gradient(135deg, rgba(255, 110, 110, 0.2), rgba(255, 160, 160, 0.2));
+        }
+
+        [data-theme="dark"] .experience-item,
+        [data-theme="dark"] .extra-item {
+            border-bottom-color: var(--border-color);
+        }
+
+        /* Gallery in dark mode */
+        [data-theme="dark"] .filter-button {
+            color: var(--text-primary);
+            border-color: var(--accent-color);
+            background: transparent;
+        }
+        
+        [data-theme="dark"] .filter-button:hover, 
+        [data-theme="dark"] .filter-button.active {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 110, 110, 0.3);
+        }
+
+        /* Social links in dark mode */
+        [data-theme="dark"] .about-card .social-link,
+        [data-theme="dark"] .social-links .social-link {
+            background: linear-gradient(135deg, #252525, #333333);
+            color: var(--text-secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        [data-theme="dark"] .about-card .social-link:hover,
+        [data-theme="dark"] .social-links .social-link:hover {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 10px 20px rgba(255,110,110,0.3);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* Product cards in dark mode */
+        [data-theme="dark"] .product-image-container {
+            background: linear-gradient(135deg, #252525, #333333);
+        }
+        
+        [data-theme="dark"] .product-card:hover .product-image-container {
+            background: linear-gradient(135deg, #252525, #303030);
+            box-shadow: inset 0 0 20px rgba(255,110,110,0.1);
+        }
+
+        [data-theme="dark"] .product-image-text {
+            color: var(--text-primary);
+        }
+        
+        /* Section titles in dark mode */
+        [data-theme="dark"] .section-title {
+            color: var(--text-primary);
+        }
+        
+        [data-theme="dark"] .font-weight-light {
+            color: var(--text-primary);
+        }
+        
+        [data-theme="dark"] .line {
+            background-color: var(--accent-color);
+        }
+        
+        [data-theme="dark"] .subtitle,
+        [data-theme="dark"] p {
+            color: var(--text-secondary);
+        }
+        
+        /* Card hover effects in dark mode */
+        [data-theme="dark"] .experience-card::before,
+        [data-theme="dark"] .product-card::before,
+        [data-theme="dark"] .extra-card::before {
+            background: linear-gradient(45deg, transparent, rgba(255,110,110,0.05), transparent);
+        }
+        
+        /* Buttons in dark mode */
+        [data-theme="dark"] .product-button:not([disabled]) {
+            background: var(--accent-gradient);
+            color: white;
+        }
+        
+        [data-theme="dark"] .product-button::before {
+            background: linear-gradient(45deg, #ffa0a0, #ff6e6e);
+        }
+        
+        [data-theme="dark"] .product-button[disabled] {
+            background: linear-gradient(45deg, #3d3d3d, #4d4d4d);
+            color: #999;
+        }
+        
+        [data-theme="dark"] .product-card:hover .product-title::after {
+            background: var(--accent-gradient);
+        }
+        
+        [data-theme="dark"] .product-category::before {
+            color: var(--accent-color);
+        }
+        
+        /* Thank You section in dark mode */
+        [data-theme="dark"] .thanks-section {
+            background: var(--thanks-bg);
+        }
+        
+        [data-theme="dark"] .thanks-card {
+            background: rgba(37, 37, 37, 0.2);
+            border-color: var(--border-color);
+        }
+        
+        [data-theme="dark"] .thanks-button {
+            color: white;
+        }
+
+        /* Header in dark mode */
+        [data-theme="dark"] .header::before {
+            background: var(--header-overlay);
+        }
+        
+        /* Gallery items in dark mode */
+        [data-theme="dark"] .gallery-item {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        [data-theme="dark"] .gallery-item:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        /* Lightbox in dark mode - already dark by default */
+        [data-theme="dark"] .lightbox-close,
+        [data-theme="dark"] .lightbox-nav:hover {
+            background-color: rgba(255,110,110,0.8);
+        }
+        
+        /* Info list in dark mode */
+        [data-theme="dark"] .info li span {
+            color: var(--accent-color);
+        }
+    </style>
     <div class="container-fluid">
         <div id="about" class="row about-section">
             <div class="col-lg-4 about-card">
@@ -98,7 +508,7 @@
                 <span class="line mb-5"></span>
                 <p class="mt-20">I started my computer science career as a problem solver. Visit several universities
                     around the country to participate in programming contests. And I am still part of it.</p>
-                <p class="mt-20">The best thing about game development is that I never get bored making games. It’s been
+                <p class="mt-20">The best thing about game development is that I never get bored making games. It's been
                     8 years since I started. And still learning everyday. Not only making games but also playing games.
                 </p>
                 <p class="mt-20">Now I got an interest in XR technology. I get excited when I work or plan to build
@@ -124,17 +534,81 @@
                     <li><span>Address</span>: Chattogram, Bangladesh.</li>
                 </ul>
                 <ul class="social-icons pt-3">
+                    <style>
+                        /* Fixed styling for social links in About/Personal Info section */
+                        .about-card .social-icons {
+                            display: flex;
+                            gap: 10px;
+                            padding: 0;
+                            margin-top: 20px;
+                            margin-bottom: 0;
+                        }
+                        
+                        .about-card .social-item {
+                            margin: 0;
+                            transform: none;
+                            opacity: 1;
+                            animation: none;
+                        }
+                        
+                        .about-card .social-link {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 40px;
+                            width: 40px;
+                            border-radius: 50%;
+                            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                            color: #666;
+                            font-size: 18px;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                        }
+                        
+                        .about-card .social-link:hover {
+                            background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                            color: white;
+                            transform: translateY(-5px);
+                            box-shadow: 0 10px 20px rgba(255,77,77,0.2);
+                        }
+                        
+                        /* General social icons styling for all other sections */
+                        .social-icons:not(.header .social-icons):not(.thanks-social) {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                        }
+                        
+                        .social-icons:not(.header .social-icons):not(.thanks-social) .social-item {
+                            margin: 0;
+                            transform: none;
+                            opacity: 1;
+                            animation: none;
+                        }
+                        
+                        .social-icons:not(.header .social-icons):not(.thanks-social) .social-link {
+                            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                            color: #666;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                        }
+                        
+                        .social-icons:not(.header .social-icons):not(.thanks-social) .social-link:hover {
+                            background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                            color: white;
+                            transform: translateY(-5px);
+                            box-shadow: 0 10px 20px rgba(255,77,77,0.2);
+                        }
+                    </style>
                     <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.facebook.com/abid.al.aqib/"><i
                                 class="ti-facebook" aria-hidden="true"></i></a></li>
                     <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://twitter.com/abid_al_aqib"><i
                                 class="ti-twitter" aria-hidden="true"></i></a></li>
-                    <!-- <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube" aria-hidden="true"></i></a></li> -->
+                    <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube" aria-hidden="true"></i></a></li>
                     <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.linkedin.com/in/abid-al-aqib/"><i
                                 class="ti-linkedin" aria-hidden="true"></i></a></li>
                     <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.instagram.com/abid.al.aqib/"><i
                                 class="ti-instagram" aria-hidden="true"></i></a></li>
-
-                    <!-- <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://github.com/theaaa-studio"><i class="ti-github" aria-hidden="true"></i></a></li> -->
+                    <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://github.com/theaaa-studio"><i class="ti-github" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="col-lg-4 about-card">
@@ -158,164 +632,311 @@
 
     <!--Resume Section-->
     <section class="section" id="expreance">
+        <style>
+            /* Experience Card Styling */
+            .experience-card {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                padding: 25px;
+                margin-bottom: 30px;
+                transition: all 0.3s ease;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .experience-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+
+            .experience-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,77,77,0.05), transparent);
+                transform: rotate(45deg);
+                transition: all 0.6s ease;
+            }
+
+            .experience-card:hover::before {
+                animation: shine 1.5s ease;
+            }
+
+            @keyframes shine {
+                0% {
+                    left: -50%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+
+            .experience-icon-container {
+                height: 80px;
+                width: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            
+            .experience-card:hover .experience-icon-container {
+                background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+                transform: scale(1.1);
+            }
+            
+            .experience-icon {
+                font-size: 32px;
+                color: #ff4d4d;
+                transition: all 0.3s ease;
+            }
+            
+            .experience-card:hover .experience-icon {
+                transform: rotate(360deg);
+            }
+
+            .experience-title {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #333;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+            }
+
+            .experience-title::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 3px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                transition: width 0.3s ease;
+            }
+
+            .experience-card:hover .experience-title::after {
+                width: 80px;
+            }
+
+            .experience-item {
+                position: relative;
+                padding: 15px 0;
+                border-bottom: 1px solid #f1f1f1;
+                transition: all 0.3s ease;
+            }
+            
+            .experience-item:last-child {
+                border-bottom: none;
+            }
+            
+            .experience-card:hover .experience-item {
+                transform: translateX(5px);
+            }
+
+            .experience-job-title {
+                font-size: 18px;
+                font-weight: 600;
+                color: #ff4d4d;
+                margin-bottom: 5px;
+            }
+            
+            .experience-position {
+                font-size: 16px;
+                font-weight: 600;
+                color: #444;
+                margin-bottom: 5px;
+            }
+            
+            .experience-date {
+                font-size: 14px;
+                color: #777;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            
+            .experience-description {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 15px;
+            }
+            
+            .social-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            /* Add specific styling for social links in Experience section */
+            .social-links .social-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 36px;
+                width: 36px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                color: #666;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                text-decoration: none;
+            }
+            
+            .social-links .social-link:hover {
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                color: white;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(255,77,77,0.2);
+                text-decoration: none;
+            }
+            
+            /* Dark mode social links in Experience section */
+            [data-theme="dark"] .social-links .social-link {
+                background: linear-gradient(135deg, #252525, #333333);
+                color: #cccccc;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            }
+            
+            [data-theme="dark"] .social-links .social-link:hover {
+                background: linear-gradient(45deg, #ff6e6e, #ffa0a0);
+                color: white;
+                box-shadow: 0 10px 20px rgba(255,110,110,0.3);
+                transform: translateY(-5px) scale(1.05);
+            }
+            
+            /* Dark mode tech list */
+            [data-theme="dark"] .tech-list {
+                color: var(--text-secondary);
+            }
+            
+            /* Improve experience card hover in dark mode */
+            [data-theme="dark"] .experience-card:hover .experience-item {
+                border-bottom-color: rgba(255,110,110,0.1);
+            }
+            
+            [data-theme="dark"] .experience-icon {
+                color: var(--accent-color);
+            }
+        </style>
+
         <div class="container">
-            <h2 class="mb-5"><span class="text-danger">My</span> Experience</h2>
+            <h2 class="mb-5 section-title"><span class="text-danger">My</span> Experience</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="mt-2">
-                                <h4>Personal Work</h4>
-                                <span class="line"></span>
+                    <div class="experience-card">
+                        <div class="experience-icon-container">
+                            <i class="ti-briefcase experience-icon"></i>
+                        </div>
+                        <h3 class="experience-title">Personal Work</h3>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">The AAA.</h4>
+                            <h5 class="experience-position">Founder</h5>
+                            <p class="experience-description">All my products publish in my publication called The AAA.</p>
+                            <div class="social-links">
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.facebook.com/theaaa.studio"><i class="ti-facebook" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.artstation.com/theaaa"><i class="ti-brush" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://github.com/theaaa-studio"><i class="ti-github" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h6 class="title text-danger">The AAA.</h6>
-                            <h6>Founder</h6>
-                            <P class="subtitle">All my products publish in my publication called The AAA.</P>
-                            <ul class="social-icons rows">
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://www.facebook.com/theaaa.studio"><i class="ti-facebook"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i
-                                            class="ti-youtube" aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://www.artstation.com/theaaa"><i class="ti-brush"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://github.com/theaaa-studio"><i class="ti-github"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="#"><i class=""
-                                            aria-hidden="true"></i></a></li>
-
-                            </ul>
-                            <hr>
-                            <h6 class="title text-danger">Matra Soft.</h6>
-                            <h6>Co-founder</h6>
-                            <P class="subtitle">I have experience working with teams. I work as and Programmer &
-                                Co-founder at Matra Soft. And some of my friends founded this team.</P>
-                            <ul class="social-icons rows">
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://www.facebook.com/matragamestudio"><i class="ti-facebook"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link"
-                                        href="https://matra-soft.com/"><i class="ti-world"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="#"><i class=""
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="#"><i class=""
-                                            aria-hidden="true"></i></a></li>
-
-                            </ul>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Matra Soft.</h4>
+                            <h5 class="experience-position">Co-founder</h5>
+                            <p class="experience-description">I have experience working with teams. I work as and Programmer & Co-founder at Matra Soft. And some of my friends founded this team.</p>
+                            <div class="social-links">
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://www.facebook.com/matragamestudio"><i class="ti-facebook" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://matra-soft.com/"><i class="ti-world" aria-hidden="true"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="mt-2">
-                                <h4>Professional Work</h4>
-                                <span class="line"></span>
+                    <div class="experience-card">
+                        <div class="experience-icon-container">
+                            <i class="ti-crown experience-icon"></i>
+                        </div>
+                        <h3 class="experience-title">Professional Work</h3>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Dreamerz Lab LTD.</h4>
+                            <h5 class="experience-position">Lead Developer</h5>
+                            <p class="experience-date">June 2022 - Present</p>
+                            <p class="experience-description">As the Lead Developer, I am responsible for managing various projects and overseeing communication and strategy with clients.</p>
+                            <div class="social-links">
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://dreamerzlab.com/"><i class="ti-world" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="title text-danger">Dreamerz Lab LTD.</h5>
-                            <h6>Lead Developer</h6>
-                            <P>June 2022 - Present</P>
-                            <P class="subtitle">As the Lead Developer, I am responsible for managing various projects and overseeing communication and strategy with clients.</P>
-
-                            <ul class="social-icons pt-3">
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://dreamerzlab.com/"><i
-                                            class="ti-world" aria-hidden="true"></i></a></li>
-                            </ul>
-                            <hr>
-                            <h6 class="title text-danger">Dreamerz Lab LTD.</h6>
-                            <h6>Game & XR Developer</h6>
-                            <P>June 2020 - May 2022</P>
-                            <P class="subtitle">I worked as a Game & XR Developer. As a Game & XR Developer, I worked on
-                                several casual and hyper-casual games and also work in several AR & VR software and
-                                games. </P>
-
-                            <ul class="social-icons pt-3">
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://dreamerzlab.com/"><i
-                                            class="ti-world" aria-hidden="true"></i></a></li>
-                            </ul>
-                            <hr>
-                            <h6 class="title text-danger">Vidribute.</h6>
-                            <h6>Game Developer (Part Time)</h6>
-                            <P>November 2023 - Present</P>
-                            <P class="subtitle">I am a Game Developer working on several ambitious games. System design and game design are my key roles.</P>
-
-                            <ul class="social-icons pt-3">
-                                <li class="social-item"><a target="_blank" rel="noopener noreferrer" class="social-link" href="https://vidribute.com/"><i
-                                            class="ti-world" aria-hidden="true"></i></a></li>
-                            </ul>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Dreamerz Lab LTD.</h4>
+                            <h5 class="experience-position">Game & XR Developer</h5>
+                            <p class="experience-date">June 2020 - May 2022</p>
+                            <p class="experience-description">I worked as a Game & XR Developer. As a Game & XR Developer, I worked on several casual and hyper-casual games and also work in several AR & VR software and games.</p>
+                            <div class="social-links">
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://dreamerzlab.com/"><i class="ti-world" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Vidribute.</h4>
+                            <h5 class="experience-position">Game Developer (Part Time)</h5>
+                            <p class="experience-date">November 2023 - Present</p>
+                            <p class="experience-description">I am a Game Developer working on several ambitious games. System design and game design are my key roles.</p>
+                            <div class="social-links">
+                                <a target="_blank" rel="noopener noreferrer" class="social-link" href="https://vidribute.com/"><i class="ti-world" aria-hidden="true"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Technology</h4>
-                                <span class="line"></span>
-                            </div>
+                    <div class="experience-card">
+                        <div class="experience-icon-container">
+                            <i class="ti-panel experience-icon"></i>
                         </div>
-                        <div class="card-body pb-2">
-                            <h6>Unity.</h6>
-
-                            <h6>Unreal.</h6>
-
-                            <h6>Web3D.</h6>
-                            <ul>
-                                <li>Model Viewer.</li>
-                                <li>Sketchfab API.</li> 
-                                <li>Babylon JS.</li>
-                                <li>ThreeJS.</li>
-                           </ul> 
-                            
-                            <h6>Node JS (REST API).</h6>
-                            
-                            <h6>React JS (Frontend).</h6>
+                        <h3 class="experience-title">Technology</h3>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Game Development</h4>
+                            <ul class="tech-list">
+                                <li>Unity</li>
+                                <li>Unreal</li>
+                            </ul>
                         </div>
-                    </div>
-
-                    <!-- <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Programming Languages</h4>
-                                <span class="line"></span>
-                            </div>
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Web3D</h4>
+                            <ul class="tech-list">
+                                <li>Model Viewer</li>
+                                <li>Sketchfab API</li> 
+                                <li>Babylon JS</li>
+                                <li>ThreeJS</li>
+                            </ul>
                         </div>
-                        <div class="card-body pb-2">
-                            <h6>C#</h6>
-                            <h6>C++</h6>
-                            <h6>Java</h6>
-                            <h6>Python</h6>
-                            <h6>Java Script</h6>
-                            <h6>php</h6>
-                            <h6>SQL</h6>
-
-                           
-
-                        </div>
-                    </div> -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Languages</h4>
-                                <span class="line"></span>
-                            </div>
-                        </div>
-                        <div class="card-body pb-2">
-                            <h6>Bangla</h6>
-
-                            <h6>English</h6>
-                            <!-- <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div> -->
-
+                        
+                        <div class="experience-item">
+                            <h4 class="experience-job-title">Web Development</h4>
+                            <ul class="tech-list">
+                                <li>Node JS (REST API)</li>
+                                <li>React JS (Frontend)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -326,67 +947,223 @@
 
     <section class="section" id="publish">
         <style>
+            /* Modern Product Card Styling */
             .product-card {
                 background: white;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                padding: 25px;
                 margin-bottom: 30px;
-                transition: transform 0.3s;
+                transition: all 0.3s ease;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0,0,0,0.05);
             }
 
             .product-card:hover {
-                transform: translateY(-5px);
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+
+            .product-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,77,77,0.05), transparent);
+                transform: rotate(45deg);
+                transition: all 0.6s ease;
+            }
+
+            .product-card:hover::before {
+                animation: shine 1.5s ease;
+            }
+
+            .product-image-container {
+                height: 180px;
+                overflow: hidden;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .product-card:hover .product-image-container {
+                box-shadow: inset 0 0 20px rgba(255,77,77,0.1);
+                background: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+            }
+
+            .product-image-text {
+                font-size: 24px;
+                font-weight: 700;
+                color: #444;
+                text-align: center;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                padding: 0 15px;
+                transition: all 0.3s ease;
+                position: relative;
+                z-index: 1;
+            }
+
+            .product-image-text::before {
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 4px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: width 0.3s ease;
+                z-index: -1;
+                border-radius: 2px;
+            }
+
+            .product-card:hover .product-image-text::before {
+                width: 50%;
             }
 
             .product-image {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 5px;
-                margin-bottom: 15px;
+                display: none; /* Hide the actual images */
             }
 
             .product-title {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 10px;
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 12px;
                 color: #333;
+                position: relative;
+                display: inline-block;
+            }
+
+            .product-title::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 40px;
+                height: 3px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                transition: width 0.3s ease;
+            }
+
+            .product-card:hover .product-title::after {
+                width: 100%;
             }
 
             .product-category {
                 color: #666;
-                font-size: 14px;
-                margin-bottom: 15px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+            }
+
+            .product-category::before {
+                content: '•';
+                color: #ff4d4d;
+                margin-right: 8px;
+                font-size: 20px;
             }
 
             .product-button {
                 background: linear-gradient(45deg, #ff4d4d, #ff8080);
                 color: white;
                 border: none;
-                padding: 10px 25px;
-                border-radius: 25px;
-                font-weight: 500;
+                padding: 12px 28px;
+                border-radius: 30px;
+                font-weight: 600;
                 transition: all 0.3s;
                 width: 100%;
                 margin-top: auto;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+            }
+
+            .product-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                background: linear-gradient(45deg, #ff8080, #ff4d4d);
+                transition: all 0.5s;
+                z-index: -1;
             }
 
             .product-button:hover {
-                background: linear-gradient(45deg, #ff8080, #ff4d4d);
-                transform: scale(1.05);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 77, 77, 0.3);
+            }
+
+            .product-button:hover::before {
+                width: 100%;
+            }
+
+            .product-button:active {
+                transform: translateY(0);
+            }
+
+            /* Disabled button styling */
+            .product-button[disabled] {
+                background: linear-gradient(45deg, #6c757d, #868e96);
+                cursor: not-allowed;
+                box-shadow: none;
+            }
+
+            .product-button[disabled]:hover {
+                transform: none;
+            }
+            
+            /* Section title styling */
+            .section-title {
+                position: relative;
+                margin-bottom: 50px;
+                font-weight: 700;
+            }
+            
+            .section-title .text-danger {
+                position: relative;
+            }
+            
+            .section-title .text-danger::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+            }
+            
+            /* Apply section styling to all sections for consistency */
+            .section {
+                padding: 80px 0;
             }
         </style>
 
         <div class="container">
-            <h1 class="mb-5"><span class="text-danger">Published</span> Products</h1>
+            <h1 class="mb-5 section-title"><span class="text-danger">Published</span> Products</h1>
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="assets/imgs/products/measuring-tool.jpg" class="product-image" alt="Measuring Tool" onerror="this.src='assets/imgs/coming-soon.jpg'"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Measuring Tool</div>
+                        </div>
                         <h3 class="product-title">Measuring Tool</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/measuring-tool-226340')">View Details</button>
@@ -395,7 +1172,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/c20771b4-ae93-4a6a-80db-46d8b6b0a32b.jpg" class="product-image" alt="Folder In Hierarchy"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Folder In Hierarchy</div>
+                        </div>
                         <h3 class="product-title">Folder In Hierarchy</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-246762')">View Details</button>
@@ -404,7 +1183,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/12537db1-380c-4797-8e5e-62038d3c39d7.jpg" class="product-image" alt="Folder In Hierarchy Pro"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Folder In Hierarchy Pro</div>
+                        </div>
                         <h3 class="product-title">Folder In Hierarchy Pro</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-pro-246760')">View Details</button>
@@ -413,7 +1194,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/e21c9dba-c2de-4f23-85c4-cab3e2f75e68.jpg" class="product-image" alt="Child Search"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Child Search</div>
+                        </div>
                         <h3 class="product-title">Child Search</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/child-search-272636')">View Details</button>
@@ -422,7 +1205,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/efb6d5cc-12da-498d-bdc0-8f4dce028767.jpg" class="product-image" alt="Quick Measure"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Quick Measure</div>
+                        </div>
                         <h3 class="product-title">Quick Measure</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/tools/utilities/quick-measure-311569')">View Details</button>
@@ -431,7 +1216,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/b4a3fdf5-0590-4da7-989a-9ddec17a5fef.jpg" class="product-image" alt="Scene View Bookmarks"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Scene View Bookmarks</div>
+                        </div>
                         <h3 class="product-title">Scene View Bookmarks</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312499')">View Details</button>
@@ -440,7 +1227,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/ef3a2c4d-1a3e-4899-951e-21f87708b16d.jpg" class="product-image" alt="V3Viz"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">V3Viz</div>
+                        </div>
                         <h3 class="product-title">V3Viz</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312603')">View Details</button>
@@ -449,7 +1238,9 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/12d77a18-f395-40fe-bfe7-a5ac020bde32.jpg" class="product-image" alt="Searchable Inspector"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Searchable Inspector</div>
+                        </div>
                         <h3 class="product-title">Searchable Inspector</h3>
                         <div class="product-category">Unity Asset</div>
                         <button class="product-button" onclick="window.open('https://assetstore.unity.com/packages/slug/312606')">View Details</button>
@@ -458,121 +1249,254 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card">
-                        <!-- <img src="assets/imgs/coming-soon.jpg" class="product-image" alt="Coming Soon"> -->
+                        <div class="product-image-container">
+                            <div class="product-image-text">Coming Soon</div>
+                        </div>
                         <h3 class="product-title">Under Development</h3>
                         <div class="product-category">Coming Soon</div>
-                        <button class="product-button" style="background: #6c757d;" disabled>Loading...</button>
+                        <button class="product-button" style="background: linear-gradient(45deg, #6c757d, #868e96);" disabled>Loading...</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <section class="section" id="extra">
+        <style>
+            /* Extra Curricular Card Styling */
+            .extra-card {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                padding: 25px;
+                margin-bottom: 30px;
+                transition: all 0.3s ease;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .extra-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+
+            .extra-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,77,77,0.05), transparent);
+                transform: rotate(45deg);
+                transition: all 0.6s ease;
+            }
+
+            .extra-card:hover::before {
+                animation: shine 1.5s ease;
+            }
+
+            @keyframes shine {
+                0% {
+                    left: -50%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+
+            .extra-icon-container {
+                height: 80px;
+                width: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            
+            .extra-card:hover .extra-icon-container {
+                background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+                transform: scale(1.1);
+            }
+            
+            .extra-icon {
+                font-size: 32px;
+                color: #ff4d4d;
+                transition: all 0.3s ease;
+            }
+            
+            .extra-card:hover .extra-icon {
+                transform: rotate(360deg);
+            }
+
+            .extra-title {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #333;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+            }
+
+            .extra-title::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 3px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                transition: width 0.3s ease;
+            }
+
+            .extra-card:hover .extra-title::after {
+                width: 80px;
+            }
+
+            .extra-item {
+                position: relative;
+                padding: 15px 0;
+                border-bottom: 1px solid #f1f1f1;
+                transition: all 0.3s ease;
+            }
+            
+            .extra-item:last-child {
+                border-bottom: none;
+            }
+            
+            .extra-card:hover .extra-item {
+                transform: translateX(5px);
+            }
+
+            .extra-item-title {
+                font-size: 16px;
+                font-weight: 600;
+                color: #444;
+                margin-bottom: 5px;
+                position: relative;
+                padding-left: 18px;
+            }
+            
+            .extra-item-title::before {
+                content: '•';
+                color: #ff4d4d;
+                position: absolute;
+                left: 0;
+                font-size: 20px;
+                line-height: 1;
+            }
+
+            .extra-item-date {
+                font-size: 14px;
+                color: #777;
+                font-weight: 500;
+                margin-left: 18px;
+            }
+            
+            .extra-item-small {
+                font-size: 14px;
+                color: #666;
+                margin: 8px 0 0 18px;
+            }
+        </style>
+
         <div class="container">
-            <h2 class="mb-5"><span class="text-danger">Extra</span> Curricular</h2>
+            <h2 class="mb-5 section-title"><span class="text-danger">Extra</span> Curricular</h2>
             <div class="row">
                 <div class="col-lg-4">
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Achievements</h4>
-                                <span class="line"></span>
-                            </div>
+                    <div class="extra-card">
+                        <div class="extra-icon-container">
+                            <i class="ti-cup extra-icon"></i>
                         </div>
-                        <div class="card-body pb-2">
-                            <h6>Runners Up in NASA Space App Challenge. (Bangladesh) - 2018.</h6>
-                            <hr>
-                            <h6>Champion in Project Show at Premier University IT Fest.- 2019.</h6>
-                            <hr>
-                            <h6>6th in Hackathon at Noni Soft (Skill Development for Mobile Game and Application
-                                Project). - 2018.</h6>
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
+                        <h3 class="extra-title">Achievements</h3>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Runners Up in NASA Space App Challenge</h4>
+                            <p class="extra-item-date">Bangladesh - 2018</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Champion in Project Show</h4>
+                            <p class="extra-item-date">Premier University IT Fest - 2019</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">6th in Hackathon at Noni Soft</h4>
+                            <p class="extra-item-date">Skill Development for Mobile Game and Application Project - 2018</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-lg-4">
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Talks</h4>
-                                <span class="line"></span>
-                            </div>
+                    <div class="extra-card">
+                        <div class="extra-icon-container">
+                            <i class="ti-microphone extra-icon"></i>
                         </div>
-                        <div class="card-body pb-2">
-                            <h6>Introduction to Video Game & XR Technology at Premier University Chittagong.- 2023.</h6>
-                            <hr>
-                            <h6>NASA Space apps Challenge (5th Data Boot Camp on AR/VR). - 2024.</h6>
-                            <hr>
-                            <h6>Introduction to Video Game & XR Technology at Premier University Chittagong.- 2025.</h6>
-                            
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
+                        <h3 class="extra-title">Talks</h3>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Introduction to Video Game & XR Technology</h4>
+                            <p class="extra-item-date">Premier University Chittagong - 2023</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">NASA Space apps Challenge</h4>
+                            <p class="extra-item-date">5th Data Boot Camp on AR/VR - 2024</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Introduction to Video Game & XR Technology</h4>
+                            <p class="extra-item-date">Premier University Chittagong - 2025</p>
                         </div>
                     </div>
-
                 </div>
-                
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Other</h4>
-                                <span class="line"></span>
-                            </div>
+                <div class="col-lg-4">
+                    <div class="extra-card">
+                        <div class="extra-icon-container">
+                            <i class="ti-medall extra-icon"></i>
                         </div>
-                        <div class="card-body pb-2">
-                            <p>Participant in NASA Space App Challenge 2018. </p>
-                            <p>Participant in NASA Space App Challenge 2019. </p>
-                            <p>Participant in Programming Contest at SUST IT Carnival 2017. </p>
-                            <p>Participant in Programming Contest CUET IT Fest 2017. </p>
-                            <p>Participant in Programming Contest EDU IT Fest 2018. </h6>
-                            <p>Participant in Programming Contest BUET IT Fest 2018. </p>
-                            <p>Participant in Project Show CUET IT Fest 2019. </p>
-                            <p>Participant in Ethical Hacking boot camp. </p>
-                            <p> Skill Development for Mobile Game and Application Project. </p>
-                            <p>Volunteer in High School Programming Contest 2018. </p>
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
-
-                            <!-- <div class="progress mb-3">
-                             <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div> -->
-
+                        <h3 class="extra-title">Other Activities</h3>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Hackathons</h4>
+                            <p class="extra-item-small">NASA Space App Challenge 2018</p>
+                            <p class="extra-item-small">NASA Space App Challenge 2019</p>
+                            <p class="extra-item-small">Hackathon at Noni Soft 2018</p>
+                            <p class="extra-item-small">Skill Development for Mobile Game and Application Project</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Programming Contests</h4>
+                            <p class="extra-item-small">SUST IT Carnival 2017</p>
+                            <p class="extra-item-small">CUET IT Fest 2017</p>
+                            <p class="extra-item-small">EDU IT Fest 2018</p>
+                            <p class="extra-item-small">BUET IT Fest 2018</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Project Showcases</h4>
+                            <p class="extra-item-small">Project Show CUET IT Fest 2019</p>
+                            <p class="extra-item-small">Premier University IT Fest 2019</p>
+                        </div>
+                        
+                        <div class="extra-item">
+                            <h4 class="extra-item-title">Bootcamps & Volunteer Work</h4>
+                            <p class="extra-item-small">Ethical Hacking boot camp</p>
+                            <p class="extra-item-small">High School Programming Contest 2018</p>
                         </div>
                     </div>
-
                 </div>
-
-                
-                
             </div>
         </div>
     </section>
@@ -580,138 +1504,817 @@
 
 
     <!-- Portfolio Section -->
-    <section class="section bg-custom-gray" id="gallery">
+    <section class="section" id="gallery">
+        <style>
+            /* Modern Gallery Styling */
+            .gallery-container {
+                padding: 0;
+            }
+            
+            .gallery-filters {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .filter-button {
+                background: transparent;
+                border: 2px solid #ff4d4d;
+                color: #333;
+                border-radius: 30px;
+                padding: 8px 20px;
+                margin: 0 5px 10px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+            
+            .filter-button:hover, .filter-button.active {
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                color: white;
+                box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+            }
+            
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                grid-gap: 25px;
+                grid-auto-flow: dense;
+            }
+            
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                height: 300px; /* Set fixed height for consistency */
+            }
+            
+            .gallery-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+            
+            /* Masonry layout - varying heights */
+            .gallery-item.wide {
+                grid-column: span 2;
+                height: 300px;
+            }
+            
+            .gallery-item.tall {
+                grid-row: span 2;
+                height: 625px;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 992px) {
+                .gallery-grid {
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    grid-gap: 20px;
+                }
+                
+                .gallery-item {
+                    height: 250px;
+                }
+                
+                .gallery-item.tall {
+                    height: 520px;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .gallery-grid {
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                }
+                
+                .gallery-item.wide {
+                    grid-column: span 1;
+                    height: 250px;
+                }
+                
+                .gallery-item.tall {
+                    height: 400px;
+                }
+            }
+            
+            .gallery-item-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                padding: 20px;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .gallery-item:hover .gallery-item-overlay {
+                opacity: 1;
+            }
+            
+            .gallery-item-content {
+                color: white;
+                text-align: center;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+                width: 100%;
+            }
+            
+            .gallery-item:hover .gallery-item-content {
+                transform: translateY(0);
+            }
+            
+            .gallery-item-title {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+            
+            .gallery-item-subtitle {
+                font-size: 14px;
+                opacity: 0.8;
+            }
+            
+            .gallery-item-icon {
+                background: #ff4d4d;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 10px;
+                transform: scale(0);
+                transition: all 0.3s ease 0.1s;
+            }
+            
+            .gallery-item:hover .gallery-item-icon {
+                transform: scale(1);
+            }
+            
+            /* Lightbox styling */
+            .lightbox {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.9);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+                flex-direction: column;
+            }
+            
+            .lightbox-content {
+                position: relative;
+                max-width: 80%;
+                max-height: 80%;
+            }
+            
+            .lightbox-img {
+                max-width: 100%;
+                max-height: 80vh;
+                border-radius: 5px;
+                box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            }
+            
+            .lightbox-caption {
+                color: white;
+                text-align: center;
+                margin-top: 20px;
+                font-size: 18px;
+            }
+            
+            .lightbox-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                transition: all 0.3s;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: rgba(255,77,77,0.8);
+            }
+            
+            .lightbox-close:hover {
+                background-color: rgba(255,77,77,1);
+                transform: rotate(90deg);
+            }
+            
+            .lightbox-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: white;
+                font-size: 40px;
+                cursor: pointer;
+                transition: all 0.3s;
+                width: 50px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0,0,0,0.3);
+                border-radius: 5px;
+            }
+            
+            .lightbox-nav:hover {
+                background-color: rgba(255,77,77,0.8);
+            }
+            
+            .lightbox-prev {
+                left: 20px;
+            }
+            
+            .lightbox-next {
+                right: 20px;
+            }
+        </style>
+
         <div class="container">
-            <h1 class="mb-5"><span class="text-danger">My</span> Gallery</h1>
-
-            <div class="portfolio">
-                <div class="row portfolio-container">
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/s.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+            <h1 class="mb-5 section-title"><span class="text-danger">My</span> Gallery</h1>
+            
+            <div class="gallery-filters mb-4">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="events">Events</button>
+                <button class="filter-button" data-filter="projects">Projects</button>
+                <button class="filter-button" data-filter="travels">Travels</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Image order reversed -->
+                <div class="gallery-item tall" data-category="events">
+                    <img src="assets/imgs/s.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Award Ceremony</h4>
+                            <p class="gallery-item-subtitle">Recognition</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/q.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="travels">
+                    <img src="assets/imgs/r.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Conference</h4>
+                            <p class="gallery-item-subtitle">International</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/r.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item wide" data-category="events">
+                    <img src="assets/imgs/q.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">NASA Event</h4>
+                            <p class="gallery-item-subtitle">Space App Challenge</p>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/a.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="projects">
+                    <img src="assets/imgs/p.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Project Demo</h4>
+                            <p class="gallery-item-subtitle">Tech Showcase</p>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/b.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="assets/imgs/o.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Team Meeting</h4>
+                            <p class="gallery-item-subtitle">Collaboration</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/c.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="projects">
+                    <img src="assets/imgs/n.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Development</h4>
+                            <p class="gallery-item-subtitle">Game Project</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/d.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="travels">
+                    <img src="assets/imgs/m.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Workshop</h4>
+                            <p class="gallery-item-subtitle">International</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/e.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item wide" data-category="events">
+                    <img src="assets/imgs/l.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Conference Talk</h4>
+                            <p class="gallery-item-subtitle">XR Technology</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/f.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item tall" data-category="projects">
+                    <img src="assets/imgs/k.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Project Launch</h4>
+                            <p class="gallery-item-subtitle">Unity Asset</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/g.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="travels">
+                    <img src="assets/imgs/j.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Travel</h4>
+                            <p class="gallery-item-subtitle">Tech Meetup</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/h.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="assets/imgs/i.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Award Ceremony</h4>
+                            <p class="gallery-item-subtitle">Recognition</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/i.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="projects">
+                    <img src="assets/imgs/h.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Development</h4>
+                            <p class="gallery-item-subtitle">Mobile App</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/j.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item wide" data-category="travels">
+                    <img src="assets/imgs/g.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Tech Conference</h4>
+                            <p class="gallery-item-subtitle">International Event</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/k.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="assets/imgs/f.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Hackathon</h4>
+                            <p class="gallery-item-subtitle">Team Competition</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/l.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item tall" data-category="projects">
+                    <img src="assets/imgs/e.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">XR Development</h4>
+                            <p class="gallery-item-subtitle">VR Project</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/m.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="assets/imgs/d.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Workshop</h4>
+                            <p class="gallery-item-subtitle">Tech Session</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/n.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item tall" data-category="travels">
+                    <img src="assets/imgs/c.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Travel Memory</h4>
+                            <p class="gallery-item-subtitle">Conference Trip</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/o.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item" data-category="projects">
+                    <img src="assets/imgs/b.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Project Showcase</h4>
+                            <p class="gallery-item-subtitle">Game Development</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 web new">
-                        <div class="portfolio-item">
-                            <img src="assets/imgs/p.jpg" class="img-fluid"
-                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                </div>
+                
+                <div class="gallery-item wide" data-category="events">
+                    <img src="assets/imgs/a.jpg" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-content">
+                            <div class="gallery-item-icon">
+                                <i class="ti-plus text-white"></i>
+                            </div>
+                            <h4 class="gallery-item-title">Event Highlight</h4>
+                            <p class="gallery-item-subtitle">Programming Competition</p>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Lightbox -->
+            <div class="lightbox">
+                <div class="lightbox-content">
+                    <img class="lightbox-img" src="" alt="Lightbox Image">
+                    <div class="lightbox-caption"></div>
+                </div>
+                <div class="lightbox-close">&times;</div>
+                <div class="lightbox-nav lightbox-prev">&lsaquo;</div>
+                <div class="lightbox-nav lightbox-next">&rsaquo;</div>
+            </div>
         </div>
     </section>
     <!-- End of portfolio section -->
-    <section class="section bg-dark py-5">
-        <div class="container text-center">
-            <h2 class="text-light mb-5 font-weight-normal">Thank You</h2>
+    <section class="section" id="thanks">
+        <style>
+            /* Thank You Section Styling - with light/dark variants */
+            .thanks-section {
+                position: relative;
+                overflow: hidden;
+                padding: 80px 0;
+                background: linear-gradient(45deg, #f8f9fa, #e9ecef); /* Light theme background */
+                transition: background 0.3s ease;
+            }
+            
+            .thanks-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: radial-gradient(rgba(255, 77, 77, 0.05) 1px, transparent 1px);
+                background-size: 20px 20px;
+                opacity: 0.7;
+                z-index: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .thanks-card {
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 40px;
+                margin-bottom: 30px;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
 
-            <a href="#home" class="btn bg-primary w-lg">Top</a>
+            .thanks-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255, 77, 77, 0.05), transparent);
+                transform: rotate(45deg);
+                transition: all 0.6s ease;
+            }
+
+            .thanks-card:hover::before {
+                animation: shine 1.5s ease;
+            }
+
+            .thanks-icon-container {
+                height: 100px;
+                width: 100px;
+                margin: 0 auto 30px;
+                background: linear-gradient(135deg, rgba(255, 77, 77, 0.1), rgba(255, 128, 128, 0.1));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                position: relative;
+                box-shadow: 0 10px 20px rgba(255, 77, 77, 0.1);
+            }
+            
+            .thanks-card:hover .thanks-icon-container {
+                background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 128, 128, 0.2));
+                transform: scale(1.1) rotate(5deg);
+            }
+            
+            .thanks-icon {
+                font-size: 40px;
+                color: #ff4d4d;
+                transition: all 0.3s ease;
+            }
+            
+            .thanks-card:hover .thanks-icon {
+                transform: rotate(360deg);
+            }
+
+            .thanks-title {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 25px;
+                color: #333;
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .thanks-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                transition: width 0.3s ease;
+            }
+
+            .thanks-card:hover .thanks-title::after {
+                width: 120px;
+            }
+
+            .thanks-text {
+                font-size: 18px;
+                color: #666;
+                margin-bottom: 40px;
+                text-align: center;
+                line-height: 1.8;
+                transition: all 0.3s ease;
+            }
+            
+            .thanks-card:hover .thanks-text {
+                transform: translateY(-5px);
+                color: #555;
+            }
+
+            .thanks-button {
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                color: white;
+                border: none;
+                padding: 15px 40px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 16px;
+                transition: all 0.3s;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                box-shadow: 0 10px 25px rgba(255, 77, 77, 0.2);
+                display: inline-block;
+                text-align: center;
+                text-decoration: none;
+            }
+            
+            .thanks-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                background: linear-gradient(45deg, #ff8080, #ff4d4d);
+                transition: all 0.5s;
+                z-index: -1;
+            }
+            
+            .thanks-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px rgba(255, 77, 77, 0.3);
+                color: white;
+                text-decoration: none;
+            }
+            
+            .thanks-button:hover::before {
+                width: 100%;
+            }
+            
+            .thanks-social {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 40px;
+                flex-wrap: wrap;
+            }
+            
+            .thanks-social-link {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #666;
+                font-size: 18px;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+            }
+            
+            .thanks-social-link:hover {
+                background: linear-gradient(45deg, #ff4d4d, #ff8080);
+                color: white;
+                transform: translateY(-8px) rotate(5deg);
+                box-shadow: 0 15px 30px rgba(255, 77, 77, 0.3);
+                text-decoration: none;
+            }
+            
+            /* Dark theme for Thanks section */
+            [data-theme="dark"] .thanks-section {
+                background: linear-gradient(45deg, #121212, #0a0a0a);
+            }
+            
+            [data-theme="dark"] .thanks-section::before {
+                background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                opacity: 0.5;
+            }
+            
+            [data-theme="dark"] .thanks-card {
+                background: rgba(37, 37, 37, 0.8);
+                border-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            
+            [data-theme="dark"] .thanks-icon-container {
+                background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 128, 128, 0.2));
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            [data-theme="dark"] .thanks-card:hover .thanks-icon-container {
+                background: linear-gradient(135deg, rgba(255, 77, 77, 0.3), rgba(255, 128, 128, 0.3));
+            }
+            
+            [data-theme="dark"] .thanks-icon {
+                color: #ff6e6e;
+            }
+            
+            [data-theme="dark"] .thanks-title {
+                color: var(--text-primary);
+            }
+            
+            [data-theme="dark"] .thanks-text {
+                color: var(--text-secondary);
+            }
+            
+            [data-theme="dark"] .thanks-card:hover .thanks-text {
+                color: var(--text-primary);
+            }
+            
+            [data-theme="dark"] .thanks-button {
+                background: linear-gradient(45deg, #ff6e6e, #ffa0a0);
+                box-shadow: 0 10px 25px rgba(255, 110, 110, 0.3);
+            }
+            
+            [data-theme="dark"] .thanks-button::before {
+                background: linear-gradient(45deg, #ffa0a0, #ff6e6e);
+            }
+            
+            [data-theme="dark"] .thanks-button:hover {
+                box-shadow: 0 15px 35px rgba(255, 110, 110, 0.4);
+            }
+            
+            [data-theme="dark"] .thanks-social-link {
+                background: rgba(37, 37, 37, 0.9);
+                color: var(--text-secondary);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            [data-theme="dark"] .thanks-social-link:hover {
+                background: linear-gradient(45deg, #ff6e6e, #ffa0a0);
+                box-shadow: 0 15px 30px rgba(255, 110, 110, 0.3);
+            }
+        </style>
+
+        <div class="thanks-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="thanks-card">
+                            <div class="thanks-icon-container">
+                                <i class="ti-heart thanks-icon"></i>
+                            </div>
+                            <h2 class="thanks-title">Thank You For Visiting</h2>
+                            <p class="thanks-text">I appreciate you taking the time to explore my portfolio. Feel free to reach out if you'd like to connect or collaborate on exciting projects. I'm always open to new opportunities and challenges!</p>
+                            
+                            <div class="text-center">
+                                <a href="#home" class="thanks-button">Back to Top</a>
+                            </div>
+                            
+                            <div class="thanks-social">
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://www.facebook.com/abid.al.aqib/"><i class="ti-facebook"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://twitter.com/abid_al_aqib"><i class="ti-twitter"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"><i class="ti-youtube"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://www.linkedin.com/in/abid-al-aqib/"><i class="ti-linkedin"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://www.instagram.com/abid.al.aqib/"><i class="ti-instagram"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="https://github.com/theaaa-studio"><i class="ti-github"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" class="thanks-social-link" href="mailto:abidaqibcse@gmail.com"><i class="ti-email"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- core  -->
@@ -727,6 +2330,151 @@
 
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
+
+    <!-- Add JavaScript for gallery functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery filtering
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Show/hide gallery items based on filter
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || filterValue === itemCategory) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox functionality
+            const galleryItemsArray = Array.from(galleryItems);
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = document.querySelector('.lightbox-img');
+            const lightboxCaption = document.querySelector('.lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            
+            let currentIndex = 0;
+            
+            // Open lightbox when gallery item is clicked
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentIndex = index;
+                    const imgSrc = this.querySelector('img').getAttribute('src');
+                    const title = this.querySelector('.gallery-item-title').textContent;
+                    const subtitle = this.querySelector('.gallery-item-subtitle').textContent;
+                    
+                    lightboxImg.setAttribute('src', imgSrc);
+                    lightboxCaption.textContent = title + ' - ' + subtitle;
+                    lightbox.style.display = 'flex';
+                    
+                    // Disable body scroll when lightbox is open
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Navigate to previous image
+            lightboxPrev.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + galleryItemsArray.length) % galleryItemsArray.length;
+                updateLightboxContent();
+            });
+            
+            // Navigate to next image
+            lightboxNext.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % galleryItemsArray.length;
+                updateLightboxContent();
+            });
+            
+            // Update lightbox content based on current index
+            function updateLightboxContent() {
+                const currentItem = galleryItemsArray[currentIndex];
+                const imgSrc = currentItem.querySelector('img').getAttribute('src');
+                const title = currentItem.querySelector('.gallery-item-title').textContent;
+                const subtitle = currentItem.querySelector('.gallery-item-subtitle').textContent;
+                
+                lightboxImg.setAttribute('src', imgSrc);
+                lightboxCaption.textContent = title + ' - ' + subtitle;
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        lightbox.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        currentIndex = (currentIndex - 1 + galleryItemsArray.length) % galleryItemsArray.length;
+                        updateLightboxContent();
+                    } else if (e.key === 'ArrowRight') {
+                        currentIndex = (currentIndex + 1) % galleryItemsArray.length;
+                        updateLightboxContent();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Theme Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme switcher functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            // Check for saved theme preference, otherwise default to dark
+            const savedTheme = localStorage.getItem('theme');
+            
+            // If a theme is saved, use it; otherwise, use dark by default
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark'); // Save the default preference
+            }
+            
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = 'light';
+                
+                if (currentTheme !== 'dark') {
+                    newTheme = 'dark';
+                }
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
 
 </body>
 

@@ -1,0 +1,233 @@
+/* Modern Navigation Bar Styling */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.nav-item {
+    margin: 0 5px;
+    position: relative;
+}
+
+.nav-link {
+    color: #333 !important;
+    font-weight: 600;
+    padding: 10px 15px !important;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #ff4d4d, #ff8080);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.nav-link:hover {
+    color: #ff4d4d !important;
+    background: rgba(255, 77, 77, 0.05);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 50%;
+    opacity: 1;
+}
+
+.nav-link.active {
+    color: #ff4d4d !important;
+    background: rgba(255, 77, 77, 0.05);
+}
+
+.brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.brand::before,
+.brand::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1), transparent);
+    transform: translateY(-50%);
+}
+
+.brand::before {
+    left: 0;
+}
+
+.brand::after {
+    right: 0;
+}
+
+.brand-img {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid white;
+}
+
+.brand-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    background: linear-gradient(135deg, #ff4d4d, #ff8080);
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+    transform: scale(0.7);
+   
+}
+
+.brand-img-container:hover {
+   
+    box-shadow: 0 8px 25px rgba(255, 77, 77, 0.3);
+}
+
+/* Center the brand content */
+.navbar-nav.brand {
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.brand-txt {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.brand-title {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.brand:hover .brand-title {
+    color: #ff4d4d;
+}
+
+.brand-subtitle {
+    font-size: 0.85rem;
+    color: #777;
+    transition: all 0.3s ease;
+}
+
+.brand:hover .brand-subtitle {
+    color: #ff8080;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 15px;
+    }
+    
+    .brand::before,
+    .brand::after {
+        display: none;
+    }
+    
+    .navbar-nav {
+        margin: 10px 0;
+    }
+    
+    /* Center brand on mobile */
+    .navbar-nav.brand {
+        flex-direction: row;
+        justify-content: center;
+        margin: 15px auto;
+    }
+    
+    .brand-img-container {
+        margin-right: 10px;
+    }
+}
+
+/* Dark mode responsive adjustments */
+[data-theme="dark"] .navbar-collapse {
+    background: rgba(26, 26, 26, 0.98);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .navbar {
+    background-color: rgba(26, 26, 26, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--accent-color) !important;
+    background: rgba(255, 110, 110, 0.1);
+}
+
+[data-theme="dark"] .brand-title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .brand-subtitle {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .navbar-toggler {
+    background: linear-gradient(135deg, #252525, #333333);
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    filter: invert(1);
+} 
