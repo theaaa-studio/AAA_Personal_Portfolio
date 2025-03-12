@@ -660,29 +660,64 @@
             <div class="col-lg-4 about-card">
                 <h3 class="font-weight-light">Education</h3>
                 <span class="line mb-5"></span>
-                <div class="card-body">
-                    <h6 class="title text-danger">B.Sc in CSE</h6>
-                    <h8 class="title text-danger">Premier University Chittagong</h8>
-                    <P>2016-2020</P>
-                    <P class="subtitle">Finished my Bachelor of science degree at Computer Science and Engineering form
-                        Premier University Chittagong.</P>
-                    <p class="subtitle"> In my university life not only I studied I was also involved with many cultural
-                        club, such as cultural club, Programming club etc. Because of that I improve my communication
-                        skill also build a good network with motivated people.
-                    </P>
+                <style>
+                    /* Education section styling */
+                    .education-item {
+                        padding: 15px 0;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .education-title {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: var(--accent-color);
+                        margin-bottom: 5px;
+                    }
+                    
+                    .education-school {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: var(--accent-color);
+                        margin-bottom: 5px;
+                    }
+                    
+                    .education-date {
+                        font-size: 14px;
+                        color: var(--text-muted);
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .education-description {
+                        font-size: 14px;
+                        color: var(--text-secondary);
+                        margin-bottom: 15px;
+                        line-height: 1.6;
+                    }
+                    
+                    .about-card:hover .education-item {
+                        transform: translateX(5px);
+                    }
+                </style>
+                <div class="education-item">
+                    <h6 class="education-title">B.Sc in CSE</h6>
+                    <h8 class="education-school">Premier University Chittagong</h8>
+                    <p class="education-date">2016-2020</p>
+                    <p class="education-description">Finished my Bachelor of science degree at Computer Science and Engineering from Premier University Chittagong.</p>
+                    <p class="education-description">In my university life not only I studied I was also involved with many cultural club, such as cultural club, Programming club etc. Because of that I improve my communication skill also build a good network with motivated people.</p>
                 </div>
-                <div class="card-body">
-                    <h6 class="title text-danger">HSC</h6>
-                    <h8 class="title text-danger">Chittagong Biggan Collage</h8>
-                    <P>2014-2015</P>
+                
+                <div class="education-item">
+                    <h6 class="education-title">HSC</h6>
+                    <h8 class="education-school">Chittagong Biggan Collage</h8>
+                    <p class="education-date">2014-2015</p>
                 </div>
 
-                <div class="card-body">
-                    <h6 class="title text-danger">SSC</h6>
-                    <h8 class="title text-danger">Chittagong GOVT Model School & College</h8>
-                    <P>2013</P>
+                <div class="education-item">
+                    <h6 class="education-title">SSC</h6>
+                    <h8 class="education-school">Chittagong GOVT Model School & College</h8>
+                    <p class="education-date">2013</p>
                 </div>
-
             </div>
         </div>
     </div>
