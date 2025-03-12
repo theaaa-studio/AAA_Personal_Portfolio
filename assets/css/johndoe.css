@@ -11610,12 +11610,13 @@ pre .code {
 }
 
 .about-section {
-  /* border-bottom: 1px solid #dee2e6; */
+  /* border-bottom: 1px solid #dee2e6;
+  border-color:#81303a */
 }
 
 .about-section .about-card {
   padding: 60px;
-  border-right: 1px solid #dee2e6;
+  /* border-right: 1px solid #dee2e6; */
 }
 
 .about-section .about-card:last-child {
