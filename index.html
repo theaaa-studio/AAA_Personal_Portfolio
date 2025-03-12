@@ -386,14 +386,16 @@
 
         /* Social links in dark mode */
         [data-theme="dark"] .about-card .social-link,
-        [data-theme="dark"] .social-links .social-link {
+        [data-theme="dark"] .social-links .social-link,
+        [data-theme="dark"] .social-icons .social-link {
             background: linear-gradient(135deg, #252525, #333333);
-            color: var(--text-secondary);
+            color: white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
         [data-theme="dark"] .about-card .social-link:hover,
-        [data-theme="dark"] .social-links .social-link:hover {
+        [data-theme="dark"] .social-links .social-link:hover,
+        [data-theme="dark"] .social-icons .social-link:hover {
             background: var(--accent-gradient);
             color: white;
             box-shadow: 0 10px 20px rgba(255,110,110,0.3);
@@ -499,6 +501,34 @@
         /* Info list in dark mode */
         [data-theme="dark"] .info li span {
             color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .info li {
+            color: var(--text-secondary);
+        }
+
+        /* Social icons in the header/navigation for both light and dark modes */
+        .social-icons .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 46px;
+            width: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #252525, #333333);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
+
+        .social-icons .social-link:hover {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 10px 20px rgba(255,110,110,0.3);
+            transform: translateY(-5px) scale(1.05);
+            text-decoration: none;
         }
     </style>
     <div class="container-fluid">
@@ -791,7 +821,7 @@
                 width: 36px;
                 border-radius: 50%;
                 background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-                color: #666;
+                color: white;
                 font-size: 16px;
                 transition: all 0.3s ease;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -809,12 +839,12 @@
             /* Dark mode social links in Experience section */
             [data-theme="dark"] .social-links .social-link {
                 background: linear-gradient(135deg, #252525, #333333);
-                color: #cccccc;
+                color: white;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             }
             
             [data-theme="dark"] .social-links .social-link:hover {
-                background: linear-gradient(45deg, #ff6e6e, #ffa0a0);
+                background: var(--accent-gradient);
                 color: white;
                 box-shadow: 0 10px 20px rgba(255,110,110,0.3);
                 transform: translateY(-5px) scale(1.05);
@@ -1428,20 +1458,20 @@
                         <div class="extra-item">
                             <h4 class="extra-item-title">Champion in Project Show</h4>
                             <p class="extra-item-date">Premier University IT Fest - 2019</p>
-                        </div>
-                        
+                </div>
+                
                         <div class="extra-item">
                             <h4 class="extra-item-title">6th in Hackathon at Noni Soft</h4>
                             <p class="extra-item-date">Skill Development for Mobile Game and Application Project - 2018</p>
                         </div>
+                        </div>
                     </div>
-                </div>
 
                 <div class="col-lg-4">
                     <div class="extra-card">
                         <div class="extra-icon-container">
                             <i class="ti-microphone extra-icon"></i>
-                        </div>
+                </div>
                         <h3 class="extra-title">Talks</h3>
                         
                         <div class="extra-item">
@@ -1460,7 +1490,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-lg-4">
                     <div class="extra-card">
                         <div class="extra-icon-container">
@@ -1482,21 +1512,21 @@
                             <p class="extra-item-small">CUET IT Fest 2017</p>
                             <p class="extra-item-small">EDU IT Fest 2018</p>
                             <p class="extra-item-small">BUET IT Fest 2018</p>
-                        </div>
+                    </div>
                         
                         <div class="extra-item">
                             <h4 class="extra-item-title">Project Showcases</h4>
                             <p class="extra-item-small">Project Show CUET IT Fest 2019</p>
                             <p class="extra-item-small">Premier University IT Fest 2019</p>
-                        </div>
-                        
+                </div>
+                
                         <div class="extra-item">
                             <h4 class="extra-item-title">Bootcamps & Volunteer Work</h4>
                             <p class="extra-item-small">Ethical Hacking boot camp</p>
                             <p class="extra-item-small">High School Programming Contest 2018</p>
                         </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1505,7 +1535,7 @@
 
     <!-- Portfolio Section -->
     <section class="section" id="gallery">
-        <style>
+    <style>
             /* Modern Gallery Styling */
             .gallery-container {
                 padding: 0;
@@ -1543,19 +1573,19 @@
             
             .gallery-item {
                 position: relative;
-                overflow: hidden;
+            overflow: hidden;
                 border-radius: 15px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 cursor: pointer;
-                transition: all 0.3s ease;
+            transition: all 0.3s ease;
                 height: 300px; /* Set fixed height for consistency */
-            }
-            
+        }
+        
             .gallery-item:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            }
-            
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
             .gallery-item img {
                 width: 100%;
                 height: 100%;
@@ -1637,13 +1667,13 @@
             }
             
             .gallery-item-title {
-                font-size: 18px;
+            font-size: 18px;
                 font-weight: 700;
-                margin-bottom: 5px;
-            }
-            
+            margin-bottom: 5px;
+        }
+        
             .gallery-item-subtitle {
-                font-size: 14px;
+            font-size: 14px;
                 opacity: 0.8;
             }
             
@@ -2251,9 +2281,9 @@
             }
             
             [data-theme="dark"] .thanks-title {
-                color: var(--text-primary);
-            }
-            
+            color: var(--text-primary);
+        }
+        
             [data-theme="dark"] .thanks-text {
                 color: var(--text-secondary);
             }
@@ -2284,8 +2314,8 @@
             [data-theme="dark"] .thanks-social-link:hover {
                 background: linear-gradient(45deg, #ff6e6e, #ffa0a0);
                 box-shadow: 0 15px 30px rgba(255, 110, 110, 0.3);
-            }
-        </style>
+        }
+    </style>
 
         <div class="thanks-section">
             <div class="container">
