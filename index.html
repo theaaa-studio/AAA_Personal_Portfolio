@@ -2685,6 +2685,96 @@
         });
     </script>
 
+    <!-- Add this script before the closing body tag -->
+    <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Existing theme toggle code (if any)
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function () {
+                    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+                    
+                    // Update icon
+                    const icon = this.querySelector('i');
+                    if (document.body.dataset.theme === 'dark') {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                    
+                    // Save theme preference
+                    localStorage.setItem('theme', document.body.dataset.theme);
+                });
+                
+                // Load saved theme preference
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.body.dataset.theme = savedTheme;
+                    
+                    // Update icon based on saved theme
+                    const icon = themeToggle.querySelector('i');
+                    if (savedTheme === 'dark') {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    }
+                }
+            }
+            
+            // Smooth scrolling for all navbar links
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            // Close mobile menu if open
+                            const navbarCollapse = document.querySelector('.navbar-collapse');
+                            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                                navbarCollapse.classList.remove('show');
+                            }
+                            
+                            // Smooth scroll to the section
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 70, // Offset for fixed navbar
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Smooth scrolling for any other links with hash
+            const otherHashLinks = document.querySelectorAll('a[href^="#"]:not(.navbar-nav .nav-link)');
+            
+            otherHashLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId !== '#' && targetId.startsWith('#')) {
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            e.preventDefault();
+                            
+                            // Smooth scroll to the section
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 70, // Offset for fixed navbar
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
