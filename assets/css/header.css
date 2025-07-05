@@ -2,8 +2,30 @@
 .header {
     position: relative;
     overflow: hidden;
-    background: url('../imgs/header5.jpg') no-repeat center center;
+    background: url('../imgs/Only The AAA Logo Caver black.jpg') no-repeat center center;
     background-size: cover;
+}
+
+/* Add media queries for light/dark mode */
+@media (prefers-color-scheme: light) {
+    .header {
+        background-image: url('../imgs/Only The AAA Logo Caver white.jpg');
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .header {
+        background-image: url('../imgs/Only The AAA Logo Caver black.jpg');
+    }
+}
+
+/* For JavaScript theme switching */
+[data-theme="light"] .header {
+    background-image: url('../imgs/Only The AAA Logo Caver white.jpg');
+}
+
+[data-theme="dark"] .header {
+    background-image: url('../imgs/Only The AAA Logo Caver black.jpg');
 }
 
 .header::before {
@@ -13,8 +35,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
     z-index: 0;
+    transition: opacity 0.3s ease;
 }
 
 .header::after {
@@ -32,23 +55,33 @@
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) translateX(0);
     }
+
     25% {
         transform: translateY(-10px) translateX(10px);
     }
+
     50% {
         transform: translateY(0) translateX(15px);
     }
+
     75% {
         transform: translateY(10px) translateX(5px);
     }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 0.2; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.2;
+    }
 }
 
 .particle {
@@ -61,9 +94,12 @@
 }
 
 @keyframes float-particle {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
@@ -87,17 +123,34 @@
 
 .social-item {
     margin: 0 8px;
-    
+
     opacity: 0;
     animation: slideUp 0.5s ease forwards;
 }
 
-.social-item:nth-child(1) { animation-delay: 0.1s; }
-.social-item:nth-child(2) { animation-delay: 0.2s; }
-.social-item:nth-child(3) { animation-delay: 0.3s; }
-.social-item:nth-child(4) { animation-delay: 0.4s; }
-.social-item:nth-child(5) { animation-delay: 0.5s; }
-.social-item:nth-child(6) { animation-delay: 0.6s; }
+.social-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.social-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.social-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.social-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.social-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.social-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
 
 @keyframes slideUp {
     to {
@@ -171,9 +224,17 @@
 }
 
 @keyframes gradientText {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes scaleIn {
@@ -235,12 +296,19 @@
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateX(-50%) translateY(0);
     }
+
     40% {
         transform: translateX(-50%) translateY(-20px);
     }
+
     60% {
         transform: translateX(-50%) translateY(-10px);
     }
@@ -250,12 +318,12 @@
     .header-title {
         font-size: 50px;
     }
-    
+
     .header-subtitle {
         font-size: 20px;
     }
-    
+
     .header-mono {
         font-size: 18px;
     }
-} 
+}
