@@ -505,6 +505,18 @@
         color: var(--muted);
         opacity: 0.9;
       }
+      /* Pill hover behavior */
+      .pill {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .pill.glass {
+        box-shadow: none;
+        background: #ffffff;
+      }
+      .pill:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+      }
       /* solid background override */
       .glow {
         display: none !important;
@@ -589,6 +601,71 @@
         -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 4.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm6-1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>')
           no-repeat center;
       }
+      /* About layout two-column */
+      .about-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .about-right {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      /* Clean data presentation for Personal Info & Technology */
+      .kv {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .kv .row {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid var(--stroke);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(2, 6, 23, 0.04);
+      }
+      .kv .label {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .kv .value {
+        font-weight: 600;
+      }
+      @media (max-width: 520px) {
+        .kv .row {
+          grid-template-columns: 120px 1fr;
+        }
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--stroke);
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--text);
+        box-shadow: 0 4px 10px rgba(2, 6, 23, 0.04);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .chip:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(2, 6, 23, 0.12);
+      }
     </style>
   </head>
   <body id="top">
@@ -618,8 +695,8 @@
       <section id="about">
         <div class="container">
           <h2 class="section-title">About</h2>
-          <div class="grid cards">
-            <article class="card glass" style="grid-column: 1/-1">
+          <div class="grid about-grid">
+            <article class="card glass about-left">
               <p>
                 I started my computer science journey as a problem solver,
                 traveling across the country for programming contests—something
@@ -668,140 +745,158 @@
               </p>
             </article>
 
-            <article class="card glass">
-              <h3 style="margin-top: 0">Personal Info</h3>
-              <ul class="list">
-                <li>Name: Abid AL Aqib</li>
-                <li>Other Name: The AAA</li>
-                <li>Email: abidaqibcse@gmail.com</li>
-                <li>Address: Chattogram, Bangladesh.</li>
-              </ul>
-              <div class="social" aria-label="Social links">
-                <a
-                  class="icon-btn"
-                  data-ic="facebook"
-                  href="https://www.facebook.com/abid.al.aqib/"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Facebook"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="x"
-                  href="https://twitter.com/abid_al_aqib"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="X (Twitter)"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="youtube"
-                  href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="YouTube"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="linkedin"
-                  href="https://www.linkedin.com/in/abid-al-aqib/"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="LinkedIn"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="instagram"
-                  href="https://www.instagram.com/abid.al.aqib/"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Instagram"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="github"
-                  href="https://github.com/theaaa-studio"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="GitHub"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="globe"
-                  href="https://assetstore.unity.com/publishers/70358"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="The AAA Asset Store"
-                ></a>
-                <a
-                  class="icon-btn"
-                  data-ic="mail"
-                  href="mailto:abidaqibcse@gmail.com"
-                  aria-label="Email"
-                ></a>
-              </div>
-            </article>
+            <div class="about-right">
+              <article class="card glass">
+                <div>
+                  <h3 style="margin-top: 0">Personal Info</h3>
+                  <div class="kv">
+                    <div class="row">
+                      <div class="label">Name</div>
+                      <div class="value">Abid AL Aqib</div>
+                    </div>
+                    <div class="row">
+                      <div class="label">Other Name</div>
+                      <div class="value">The AAA</div>
+                    </div>
+                    <div class="row">
+                      <div class="label">Email</div>
+                      <div class="value">abidaqibcse@gmail.com</div>
+                    </div>
+                    <div class="row">
+                      <div class="label">Address</div>
+                      <div class="value">Chattogram, Bangladesh.</div>
+                    </div>
+                  </div>
+                  <div class="social" aria-label="Social links">
+                    <a
+                      class="icon-btn"
+                      data-ic="facebook"
+                      href="https://www.facebook.com/abid.al.aqib/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Facebook"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="x"
+                      href="https://twitter.com/abid_al_aqib"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="X (Twitter)"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="youtube"
+                      href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="YouTube"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="linkedin"
+                      href="https://www.linkedin.com/in/abid-al-aqib/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="LinkedIn"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="instagram"
+                      href="https://www.instagram.com/abid.al.aqib/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Instagram"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="github"
+                      href="https://github.com/theaaa-studio"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="GitHub"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="globe"
+                      href="https://assetstore.unity.com/publishers/70358"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="The AAA Asset Store"
+                    ></a>
+                    <a
+                      class="icon-btn"
+                      data-ic="mail"
+                      href="mailto:abidaqibcse@gmail.com"
+                      aria-label="Email"
+                    ></a>
+                  </div>
+                </div>
+              </article>
 
-            <article class="card glass" style="grid-column: span 2">
-              <h3 style="margin-top: 0">Education</h3>
-              <div class="acc">
-                <div class="acc-item open">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>B.Sc in CSE</strong> —
-                      <span class="muted"
-                        >Premier University Chittagong</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel">
-                    <div>
-                      <p class="muted" style="margin-top: 0">2016-2020</p>
-                      <p>
-                        Finished my Bachelor of science degree at Computer
-                        Science and Engineering from Premier University
-                        Chittagong.
-                      </p>
-                      <p>
-                        In my university life not only I studied I was also
-                        involved with many cultural club, such as cultural club,
-                        Programming club etc. Because of that I improve my
-                        communication skill also build a good network with
-                        motivated people.
-                      </p>
+              <article class="card glass">
+                <h3 style="margin: 18px 0 0">Education</h3>
+                <div class="acc">
+                  <div class="acc-item open">
+                    <button class="acc-btn" type="button">
+                      <span
+                        ><strong>B.Sc in CSE</strong> —
+                        <span class="muted"
+                          >Premier University Chittagong</span
+                        ></span
+                      ><span class="chev">▾</span>
+                    </button>
+                    <div class="acc-panel">
+                      <div>
+                        <p class="muted" style="margin-top: 0">2016-2020</p>
+                        <p>
+                          Finished my Bachelor of science degree at Computer
+                          Science and Engineering from Premier University
+                          Chittagong.
+                        </p>
+                        <p>
+                          In my university life not only I studied I was also
+                          involved with many cultural club, such as cultural
+                          club, Programming club etc. Because of that I improve
+                          my communication skill also build a good network with
+                          motivated people.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="acc-item">
+                    <button class="acc-btn" type="button">
+                      <span
+                        ><strong>HSC</strong> —
+                        <span class="muted"
+                          >Chittagong Biggan Collage</span
+                        ></span
+                      ><span class="chev">▾</span>
+                    </button>
+                    <div class="acc-panel">
+                      <div>
+                        <p class="muted" style="margin-top: 0">2014-2015</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="acc-item">
+                    <button class="acc-btn" type="button">
+                      <span
+                        ><strong>SSC</strong> —
+                        <span class="muted"
+                          >Chattogram Govt. Model School & College</span
+                        ></span
+                      ><span class="chev">▾</span>
+                    </button>
+                    <div class="acc-panel">
+                      <div>
+                        <p class="muted" style="margin-top: 0">2013</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>HSC</strong> —
-                      <span class="muted">Chittagong Biggan Collage</span></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel">
-                    <div>
-                      <p class="muted" style="margin-top: 0">2014-2015</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>SSC</strong> —
-                      <span class="muted"
-                        >Chittagong GOVT Model School & College</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel">
-                    <div>
-                      <p class="muted" style="margin-top: 0">2013</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -978,26 +1073,25 @@
           <div class="grid cards" style="margin-top: 10px">
             <article class="card glass">
               <h4 style="margin-top: 0">Game Development</h4>
-              <ul class="list">
-                <li>Unity</li>
-                <li>Unreal</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">Unity</span><span class="chip">Unreal</span>
+              </div>
             </article>
             <article class="card glass">
               <h4 style="margin-top: 0">Web3D</h4>
-              <ul class="list">
-                <li>Model Viewer</li>
-                <li>Sketchfab API</li>
-                <li>Babylon JS</li>
-                <li>ThreeJS</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">Model Viewer</span
+                ><span class="chip">Sketchfab API</span
+                ><span class="chip">Babylon JS</span
+                ><span class="chip">ThreeJS</span>
+              </div>
             </article>
             <article class="card glass">
               <h4 style="margin-top: 0">Web Development</h4>
-              <ul class="list">
-                <li>Node JS (REST API)</li>
-                <li>React JS (Frontend)</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">Node JS (REST API)</span
+                ><span class="chip">React JS (Frontend)</span>
+              </div>
             </article>
           </div>
         </div>
@@ -1242,8 +1336,12 @@
               </ul>
             </article>
           </div>
+        </div>
+      </section>
 
-          <article class="card glass" style="margin-top: 18px">
+      <section id="thanks">
+        <div class="container">
+          <article class="card glass">
             <h3 style="margin-top: 0">Thank You For Visiting</h3>
             <p>
               I appreciate you taking the time to explore my portfolio. Feel
