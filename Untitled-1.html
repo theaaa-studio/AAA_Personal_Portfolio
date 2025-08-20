@@ -128,7 +128,7 @@
         grid-template-columns: 1.1fr 0.9fr;
         gap: 24px;
         align-items: center;
-        padding: 64px 0;
+        padding: 48px 0;
       }
       h1 {
         font-size: clamp(36px, 6vw, 60px);
@@ -170,7 +170,7 @@
       /* SECTIONS */
       section {
         position: relative;
-        padding: 56px 0;
+        padding: 36px 0;
         border-top: 1px solid rgba(2, 6, 23, 0.06);
       }
       section:first-of-type {
@@ -306,26 +306,6 @@
       .acc-btn a:hover {
         opacity: 0.85;
       }
-      /* external link globe icon next to company names */
-      .acc-btn a.ext {
-        position: relative;
-        padding-right: 18px;
-      }
-      .acc-btn a.ext::after {
-        content: "";
-        position: absolute;
-        right: -2px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 14px;
-        height: 14px;
-        background: currentColor;
-        opacity: 0.7;
-        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>')
-          no-repeat center;
-        -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>')
-          no-repeat center;
-      }
 
       /* FOOTER */
       footer {
@@ -340,6 +320,12 @@
         border: 1px solid var(--stroke);
         padding: 10px 14px;
         border-radius: 999px;
+        background: #fff;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .backtop:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(2, 6, 23, 0.16);
       }
 
       @media (max-width: 900px) {
@@ -666,6 +652,18 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 18px rgba(2, 6, 23, 0.12);
       }
+      /* Extra Curricular layout: Achievements + Talks side-by-side, Other Activities full width */
+      #extra .cards {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+      }
+      #extra .cards article:last-child {
+        grid-column: 1 / -1;
+      }
+      @media (max-width: 780px) {
+        #extra .cards {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body id="top">
@@ -911,15 +909,7 @@
             <div class="acc-item open">
               <button class="acc-btn" type="button">
                 <span
-                  ><strong
-                    ><a
-                      class="ext"
-                      href="https://assetstore.unity.com/publishers/70358"
-                      target="_blank"
-                      rel="noopener"
-                      >The AAA.</a
-                    ></strong
-                  >
+                  ><strong>The AAA.</strong>
                   <span class="tag">Founder</span></span
                 ><span class="chev">▾</span>
               </button>
@@ -968,15 +958,7 @@
             <div class="acc-item">
               <button class="acc-btn" type="button">
                 <span
-                  ><strong
-                    ><a
-                      class="ext"
-                      href="https://matra-soft.com/"
-                      target="_blank"
-                      rel="noopener"
-                      >Matra Soft.</a
-                    ></strong
-                  >
+                  ><strong>Matra Soft.</strong>
                   <span class="tag">Co-founder</span></span
                 ><span class="chev">▾</span>
               </button>
@@ -987,6 +969,16 @@
                     Programmer & Co-founder at Matra Soft. And some of my
                     friends founded this team.
                   </p>
+                  <div class="social" aria-label="Matra Soft social">
+                    <a
+                      class="icon-btn"
+                      data-ic="globe"
+                      href="https://matra-soft.com/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Website"
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -997,15 +989,7 @@
             <div class="acc-item open">
               <button class="acc-btn" type="button">
                 <span
-                  ><strong
-                    ><a
-                      class="ext"
-                      href="https://dreamerzlab.com/"
-                      target="_blank"
-                      rel="noopener"
-                      >Dreamerz Lab LTD.</a
-                    ></strong
-                  >
+                  ><strong>Dreamerz Lab LTD.</strong>
                   <span class="tag">Lead Developer</span></span
                 ><span class="chev">▾</span>
               </button>
@@ -1017,6 +1001,16 @@
                     projects and overseeing communication and strategy with
                     clients.
                   </p>
+                  <div class="social" aria-label="Dreamerz Lab website">
+                    <a
+                      class="icon-btn"
+                      data-ic="globe"
+                      href="https://dreamerzlab.com/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Website"
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1037,21 +1031,23 @@
                     I worked on several casual and hyper-casual games and also
                     work in several AR & VR software and games.
                   </p>
+                  <div class="social" aria-label="Dreamerz Lab website">
+                    <a
+                      class="icon-btn"
+                      data-ic="globe"
+                      href="https://dreamerzlab.com/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Website"
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="acc-item">
               <button class="acc-btn" type="button">
                 <span
-                  ><strong
-                    ><a
-                      class="ext"
-                      href="https://vidribute.com/"
-                      target="_blank"
-                      rel="noopener"
-                      >Vidribute.</a
-                    ></strong
-                  >
+                  ><strong>Vidribute.</strong>
                   <span class="tag">Game Developer (Part Time)</span></span
                 ><span class="chev">▾</span>
               </button>
@@ -1064,21 +1060,36 @@
                     I am a Game Developer working on several ambitious games.
                     System design and game design are my key roles.
                   </p>
+                  <div class="social" aria-label="Vidribute website">
+                    <a
+                      class="icon-btn"
+                      data-ic="globe"
+                      href="https://vidribute.com/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Website"
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <h3 style="margin-top: 28px">Technology</h3>
-          <div class="grid cards" style="margin-top: 10px">
+      <!-- Technology -->
+      <section id="technology">
+        <div class="container">
+          <h2 class="section-title">Technology</h2>
+          <div class="grid cards">
             <article class="card glass">
-              <h4 style="margin-top: 0">Game Development</h4>
+              <h3 style="margin-top: 0">Game Engines</h3>
               <div class="chips">
                 <span class="chip">Unity</span><span class="chip">Unreal</span>
               </div>
             </article>
             <article class="card glass">
-              <h4 style="margin-top: 0">Web3D</h4>
+              <h3 style="margin-top: 0">Web 3D</h3>
               <div class="chips">
                 <span class="chip">Model Viewer</span
                 ><span class="chip">Sketchfab API</span
@@ -1087,7 +1098,7 @@
               </div>
             </article>
             <article class="card glass">
-              <h4 style="margin-top: 0">Web Development</h4>
+              <h3 style="margin-top: 0">Web Technologies</h3>
               <div class="chips">
                 <span class="chip">Node JS (REST API)</span
                 ><span class="chip">React JS (Frontend)</span>
@@ -1259,81 +1270,123 @@
           <div class="grid cards">
             <article class="card glass">
               <h3 style="margin-top: 0">Achievements</h3>
-              <ul class="list">
-                <li>
-                  <strong>Runners Up in NASA Space App Challenge</strong
-                  ><br /><span class="muted">Bangladesh - 2018</span>
-                </li>
-                <li>
-                  <strong>Champion in Project Show</strong><br /><span
-                    class="muted"
-                    >Premier University IT Fest - 2019</span
-                  >
-                </li>
-                <li>
-                  <strong>6th in Hackathon at Noni Soft</strong><br /><span
-                    class="muted"
-                    >Skill Development for Mobile Game and Application Project -
-                    2018
-                  </span>
-                </li>
-                <li>
-                  <strong>Coach in National woman programming contest</strong
-                  ><br /><span class="muted">2019</span>
-                </li>
-              </ul>
+              <div class="acc">
+                <div class="acc-item open">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Runners Up in NASA Space App Challenge</strong>
+                      <span class="tag">Bangladesh — 2018</span></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Champion in Project Show</strong>
+                      <span class="tag"
+                        >Premier University IT Fest — 2019</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>6th in Hackathon at Noni Soft</strong>
+                      <span class="tag"
+                        >Skill Development for Mobile Game and Application
+                        Project — 2018</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong
+                        >Coach in National woman programming contest</strong
+                      >
+                      <span class="tag">2019</span></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+              </div>
             </article>
             <article class="card glass">
               <h3 style="margin-top: 0">Talks</h3>
-              <ul class="list">
-                <li>
-                  <strong>Introduction to Video Game & XR Technology</strong
-                  ><br /><span class="muted"
-                    >Premier University Chittagong - 2023</span
-                  >
-                </li>
-                <li>
-                  <strong>NASA Space apps Challenge</strong><br /><span
-                    class="muted"
-                    >5th Data Boot Camp on AR/VR - 2024</span
-                  >
-                </li>
-                <li>
-                  <strong>Introduction to Video Game & XR Technology</strong
-                  ><br /><span class="muted"
-                    >Premier University Chittagong - 2025</span
-                  >
-                </li>
-              </ul>
+              <div class="acc">
+                <div class="acc-item open">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong
+                        >Introduction to Video Game & XR Technology</strong
+                      >
+                      <span class="tag"
+                        >Premier University Chittagong — 2023</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>NASA Space apps Challenge</strong>
+                      <span class="tag"
+                        >5th Data Boot Camp on AR/VR — 2024</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong
+                        >Introduction to Video Game & XR Technology</strong
+                      >
+                      <span class="tag"
+                        >Premier University Chittagong — 2025</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel"><div></div></div>
+                </div>
+              </div>
             </article>
             <article class="card glass">
               <h3 style="margin-top: 0">Other Activities</h3>
               <h4>Hackathons</h4>
-              <ul class="list">
-                <li>NASA Space App Challenge 2018</li>
-                <li>NASA Space App Challenge 2019</li>
-                <li>Hackathon at Noni Soft 2018</li>
-                <li>
-                  Skill Development for Mobile Game and Application Project
-                </li>
-              </ul>
+              <div class="chips">
+                <span class="chip">NASA Space App Challenge 2018</span
+                ><span class="chip">NASA Space App Challenge 2019</span
+                ><span class="chip">Hackathon at Noni Soft 2018</span
+                ><span class="chip"
+                  >Skill Development for Mobile Game and Application
+                  Project</span
+                >
+              </div>
               <h4>Programming Contests</h4>
-              <ul class="list">
-                <li>SUST IT Carnival 2017</li>
-                <li>CUET IT Fest 2017</li>
-                <li>EDU IT Fest 2018</li>
-                <li>BUET IT Fest 2018</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">SUST IT Carnival 2017</span
+                ><span class="chip">CUET IT Fest 2017</span
+                ><span class="chip">EDU IT Fest 2018</span
+                ><span class="chip">BUET IT Fest 2018</span>
+              </div>
               <h4>Project Showcases</h4>
-              <ul class="list">
-                <li>Project Show CUET IT Fest 2019</li>
-                <li>Premier University IT Fest 2019</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">Project Show CUET IT Fest 2019</span
+                ><span class="chip">Premier University IT Fest 2019</span>
+              </div>
               <h4>Bootcamps & Volunteer Work</h4>
-              <ul class="list">
-                <li>Ethical Hacking boot camp</li>
-                <li>High School Programming Contest 2018</li>
-              </ul>
+              <div class="chips">
+                <span class="chip">Ethical Hacking boot camp</span
+                ><span class="chip">High School Programming Contest 2018</span>
+              </div>
             </article>
           </div>
         </div>
@@ -1360,6 +1413,7 @@
         <a href="#home" role="tab" aria-selected="true">Home</a>
         <a href="#about" role="tab">About</a>
         <a href="#experience" role="tab">Experience</a>
+        <a href="#technology" role="tab">Technology</a>
         <a href="#games" role="tab">Games</a>
         <a href="#tools" role="tab">Tools</a>
         <a href="#extra" role="tab">Extra</a>
