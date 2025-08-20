@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The AAA Portfolio — Single File</title>
+    <meta
+      name="description"
+      content="Redesigned single‑file portfolio for The AAA (Abid Al Aqib)"
+    />
+    <style>
+      :root {
+        --bg: #f7f8fb;
+        --bg-2: #ffffff;
+        --text: #0f172a;
+        --muted: #55627a;
+        --brand: #6d28d9;
+        --brand-2: #0891b2;
+        --card: #ffffff;
+        --stroke: rgba(15, 23, 42, 0.12);
+        --radius: 18px;
+        --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+        --max: 1120px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        scroll-behavior: smooth;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+          sans-serif;
+      }
+      a {
+        color: var(--text);
+        text-decoration: none;
+      }
+      .container {
+        width: min(var(--max), 92%);
+        margin-inline: auto;
+      }
+
+      /* Decorative gradients inspired by aifiesta */
+      .glow {
+        position: absolute;
+        inset: auto auto auto 50%;
+        translate: -50% 0;
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(50px);
+        opacity: 0.5;
+      }
+      .glow div {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(50px);
+      }
+      .g1 {
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(
+          closest-side,
+          rgba(34, 211, 238, 0.35),
+          transparent 70%
+        );
+      }
+      .g2 {
+        width: 520px;
+        height: 520px;
+        left: -160px;
+        top: 140px;
+        background: radial-gradient(
+          closest-side,
+          rgba(139, 92, 246, 0.35),
+          transparent 70%
+        );
+      }
+
+      /* NAV */
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: saturate(1.2) blur(10px);
+        background: rgba(11, 15, 26, 0.6);
+        z-index: 50;
+        border-bottom: 1px solid var(--stroke);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 12px 0;
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+      .brand .dot {
+        color: var(--brand);
+      }
+      nav {
+        margin-left: auto;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+      }
+      nav a:hover {
+        border-color: var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+        padding: 64px 0;
+      }
+      h1 {
+        font-size: clamp(36px, 6vw, 60px);
+        line-height: 1.05;
+        margin: 0 0 12px;
+      }
+      .eyebrow {
+        color: var(--brand-2);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.84rem;
+      }
+      .sub {
+        color: var(--muted);
+      }
+      .hero-card {
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 22px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      .pill {
+        display: inline-block;
+        padding: 10px 14px;
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      /* SECTIONS */
+      section {
+        position: relative;
+        padding: 56px 0;
+        border-top: 1px solid rgba(2, 6, 23, 0.06);
+      }
+      section:first-of-type {
+        border-top: none;
+      }
+      .section-title {
+        font-size: clamp(26px, 3.5vw, 36px);
+        margin: 0 0 18px;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      /* ABOUT & INFO */
+      .cards {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+      .list {
+        padding-left: 1.1rem;
+        margin: 10px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* ACCORDION (FAQ-like for Experience & Education) */
+      .acc {
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .acc-item + .acc-item {
+        border-top: 1px solid var(--stroke);
+      }
+      .acc-btn {
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: 0;
+        color: var(--text);
+        padding: 18px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .acc-btn .tag {
+        color: var(--brand-2);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .acc-btn:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .acc-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .acc-panel > div {
+        padding: 0 18px 18px;
+      }
+      .chev {
+        transition: transform 0.35s ease;
+      }
+      .acc-item.open .acc-panel {
+        max-height: 600px;
+      }
+      .acc-item.open .chev {
+        transform: rotate(180deg);
+      }
+
+      /* TOOLS grid */
+      .tool-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .tool-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+      }
+      /* Ensure My Games cards match Tools size without adding new content */
+      #games .tool-card {
+        position: relative;
+      }
+      #games .tool-card::before {
+        content: "";
+        display: block;
+        height: 180px;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: linear-gradient(
+          180deg,
+          rgba(2, 6, 23, 0.05),
+          rgba(2, 6, 23, 0.02)
+        );
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.6rem;
+        transition: transform 0.25s ease;
+      }
+      #games .tool-card:hover::before {
+        transform: translateY(-3px);
+      }
+      .tool-title {
+        font-weight: 700;
+        margin: 0.6rem 0 0.25rem;
+      }
+      .btn-ghost {
+        align-self: center;
+        border: 1px solid var(--stroke);
+        padding: 8px 12px;
+        border-radius: 10px;
+        color: var(--muted);
+        display: inline-block;
+      }
+      .acc-btn a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .acc-btn a:hover {
+        opacity: 0.85;
+      }
+      /* external link globe icon next to company names */
+      .acc-btn a.ext {
+        position: relative;
+        padding-right: 18px;
+      }
+      .acc-btn a.ext::after {
+        content: "";
+        position: absolute;
+        right: -2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 14px;
+        background: currentColor;
+        opacity: 0.7;
+        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>')
+          no-repeat center;
+        -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.5 9h-3.09A8.03 8.03 0 0 0 16 5.43 8.02 8.02 0 0 1 19.5 11Zm-5.41 0H9.91a10.3 10.3 0 0 1 0-3h4.18a10.3 10.3 0 0 1 0 3ZM8 5.43A8.03 8.03 0 0 0 7.59 11H4.5A8.02 8.02 0 0 1 8 5.43ZM4.5 13h3.09A8.03 8.03 0 0 0 8 18.57 8.02 8.02 0 0 1 4.5 13Zm5.41 0h4.18a10.3 10.3 0 0 1 0 3H9.91a10.3 10.3 0 0 1 0-3ZM16 18.57A8.03 8.03 0 0 0 16.41 13h3.09A8.02 8.02 0 0 1 16 18.57Z"/></svg>')
+          no-repeat center;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 46px 0;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid var(--stroke);
+      }
+      .backtop {
+        display: inline-block;
+        margin-top: 18px;
+        border: 1px solid var(--stroke);
+        padding: 10px 14px;
+        border-radius: 999px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Bottom segmented nav (pill) */
+      header {
+        display: none;
+      } /* replaced by bottom nav */
+      body {
+        padding-bottom: 110px;
+      }
+      .bottom-nav {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: max(20px, env(safe-area-inset-bottom));
+        z-index: 99;
+      }
+      .bottom-nav .seg {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        padding: 12px 22px;
+        background: rgba(17, 17, 17, 0.9);
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+      }
+      .bottom-nav a {
+        color: var(--muted);
+        font-weight: 600;
+        padding: 8px 6px;
+        border-radius: 8px;
+      }
+      .bottom-nav a:hover {
+        color: var(--text);
+      }
+      .bottom-nav a.active {
+        color: var(--text);
+        font-weight: 800;
+      }
+
+      @media (max-width: 560px) {
+        .bottom-nav .seg {
+          gap: 14px;
+          padding: 10px 16px;
+        }
+      }
+      /* iOS glass (frosted with a little roughness) */
+      body {
+        background: radial-gradient(
+            900px 900px at 10% -10%,
+            #e8f0ff 0,
+            rgba(232, 240, 255, 0) 50%
+          ),
+          radial-gradient(
+            800px 800px at 110% 0%,
+            #e6fff7 0,
+            rgba(230, 255, 247, 0) 50%
+          ),
+          linear-gradient(#f7f8fb, #f7f8fb);
+        background-attachment: fixed;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.08;
+        mix-blend-mode: normal;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.06) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        background-size: 3px 3px, 3px 3px;
+      }
+
+      .glass {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(255, 255, 255, 0.9)
+        );
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+      }
+
+      .card {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+      .hero-card {
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+      .pill {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      section {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .bottom-nav .seg {
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .bottom-nav a {
+        transition: background 0.2s ease;
+      }
+      .bottom-nav a.active {
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 10px;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.8);
+      }
+      /* Boxy style overrides */
+      :root {
+        --radius: 16px;
+      }
+      .glass {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.025)
+        );
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      }
+      .card,
+      .hero-card,
+      .acc,
+      section .container {
+        background: #ffffff;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        padding: 28px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06),
+          inset 0 1px rgba(255, 255, 255, 0.8);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        will-change: transform;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .card,
+      .hero-card,
+      .acc {
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+        will-change: transform;
+      }
+      .card:hover,
+      .hero-card:hover,
+      .acc:hover,
+      section .container:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+      }
+      .tool-card img {
+        transition: transform 0.25s ease;
+      }
+      .tool-card:hover img {
+        transform: translateY(-3px);
+      }
+      .btn-ghost {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
+      }
+      /* Motto styling */
+      .motto {
+        font-weight: 800;
+        font-size: clamp(22px, 3.5vw, 28px);
+        letter-spacing: 0.02em;
+      }
+      .motto-sub {
+        color: var(--muted);
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body id="top">
+    <main>
+      <!-- Hero -->
+      <section id="home" class="hero">
+        <div class="glow" aria-hidden="true">
+          <div class="g1"></div>
+          <div class="g2"></div>
+        </div>
+        <div class="container hero-wrap">
+          <div>
+            <div class="eyebrow">Hello, I am</div>
+            <h1>The AAA</h1>
+            <div class="pill glass">Abid Al Aqib</div>
+          </div>
+          <div class="hero-card glass">
+            <h3 class="muted motto" style="margin: 0 0 8px">
+              Build, Break, Rebuild
+            </h3>
+            <p class="motto-sub" style="margin: 0">Build, Break, Rebuild</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="container">
+          <h2 class="section-title">About</h2>
+          <div class="grid cards">
+            <article class="card glass" style="grid-column: 1/-1">
+              <p>
+                I started my computer science journey as a problem solver,
+                traveling across the country for programming contests—something
+                I still love doing today. Solving problems and pushing my skills
+                has always been my thing.
+              </p>
+              <p>
+                Game development keeps me hooked. Even after 8 years, I'm still
+                learning, creating, and playing. Lately, XR technology has
+                grabbed my interest, and I get pumped whenever I build something
+                new in this space.
+              </p>
+              <p>
+                I just love building stuff. Over the years, I've made games,
+                apps, websites, and desktop applications—each one teaching me
+                something new.
+              </p>
+              <p>
+                I also had the chance to mentor a school programmer who competed
+                at the National Girls Programming Contest 2019, which was a
+                proud moment for me.
+              </p>
+              <p>
+                Programming is my strong suit. I believe logic matters more than
+                the language, so I adapt fast and code across different
+                technologies with ease.
+              </p>
+              <p>
+                With 7 years in game dev and 5 in XR, I've designed and built
+                games, XR apps, Web3D experiences, interactive architectural
+                tools, and utilities. My experience has sharpened my skills and
+                fueled my creativity.
+              </p>
+              <p>
+                For the past 2 years, I've been the Lead Developer at my
+                organization, handling everything from planning and design to
+                development and deployment. I work closely with clients, project
+                managers, and my team to ensure we deliver top-notch results.
+                Turning ideas into reality and leading a team to create
+                something amazing is what keeps me going.
+              </p>
+              <p>
+                At the end of the day, whether it's coding, mentoring, or
+                exploring new tech, it's all about building, learning, and
+                pushing boundaries.
+              </p>
+            </article>
+
+            <article class="card glass">
+              <h3 style="margin-top: 0">Personal Info</h3>
+              <ul class="list">
+                <li>Name: Abid AL Aqib</li>
+                <li>Other Name: The AAA</li>
+                <li>Email: abidaqibcse@gmail.com</li>
+                <li>Address: Chattogram, Bangladesh.</li>
+              </ul>
+            </article>
+
+            <article class="card glass" style="grid-column: span 2">
+              <h3 style="margin-top: 0">Education</h3>
+              <div class="acc">
+                <div class="acc-item open">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>B.Sc in CSE</strong> —
+                      <span class="muted"
+                        >Premier University Chittagong</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">2016-2020</p>
+                      <p>
+                        Finished my Bachelor of science degree at Computer
+                        Science and Engineering from Premier University
+                        Chittagong.
+                      </p>
+                      <p>
+                        In my university life not only I studied I was also
+                        involved with many cultural club, such as cultural club,
+                        Programming club etc. Because of that I improve my
+                        communication skill also build a good network with
+                        motivated people.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>HSC</strong> —
+                      <span class="muted">Chittagong Biggan Collage</span></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">2014-2015</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>SSC</strong> —
+                      <span class="muted"
+                        >Chittagong GOVT Model School & College</span
+                      ></span
+                    ><span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">2013</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <div class="container">
+          <h2 class="section-title">My Experience</h2>
+
+          <h3 class="muted" style="margin-top: 0">Personal Work</h3>
+          <div class="acc" style="margin-bottom: 18px">
+            <div class="acc-item open">
+              <button class="acc-btn" type="button">
+                <span
+                  ><strong
+                    ><a
+                      class="ext"
+                      href="https://assetstore.unity.com/publishers/70358"
+                      target="_blank"
+                      rel="noopener"
+                      >The AAA.</a
+                    ></strong
+                  >
+                  <span class="tag">Founder</span></span
+                ><span class="chev">▾</span>
+              </button>
+              <div class="acc-panel">
+                <div>
+                  <p>
+                    All my products publish in my publication called The AAA.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button">
+                <span
+                  ><strong
+                    ><a
+                      class="ext"
+                      href="https://matra-soft.com/"
+                      target="_blank"
+                      rel="noopener"
+                      >Matra Soft.</a
+                    ></strong
+                  >
+                  <span class="tag">Co-founder</span></span
+                ><span class="chev">▾</span>
+              </button>
+              <div class="acc-panel">
+                <div>
+                  <p>
+                    I have experience working with teams. I work as and
+                    Programmer & Co-founder at Matra Soft. And some of my
+                    friends founded this team.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="muted">Professional Work</h3>
+          <div class="acc">
+            <div class="acc-item open">
+              <button class="acc-btn" type="button">
+                <span
+                  ><strong
+                    ><a
+                      class="ext"
+                      href="https://dreamerzlab.com/"
+                      target="_blank"
+                      rel="noopener"
+                      >Dreamerz Lab LTD.</a
+                    ></strong
+                  >
+                  <span class="tag">Lead Developer</span></span
+                ><span class="chev">▾</span>
+              </button>
+              <div class="acc-panel">
+                <div>
+                  <p class="muted" style="margin-top: 0">June 2022 - Present</p>
+                  <p>
+                    As the Lead Developer, I am responsible for managing various
+                    projects and overseeing communication and strategy with
+                    clients.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button">
+                <span
+                  ><strong>Dreamerz Lab LTD.</strong>
+                  <span class="tag">Game & XR Developer</span></span
+                ><span class="chev">▾</span>
+              </button>
+              <div class="acc-panel">
+                <div>
+                  <p class="muted" style="margin-top: 0">
+                    June 2020 - May 2022
+                  </p>
+                  <p>
+                    I worked as a Game & XR Developer. As a Game & XR Developer,
+                    I worked on several casual and hyper-casual games and also
+                    work in several AR & VR software and games.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button">
+                <span
+                  ><strong
+                    ><a
+                      class="ext"
+                      href="https://vidribute.com/"
+                      target="_blank"
+                      rel="noopener"
+                      >Vidribute.</a
+                    ></strong
+                  >
+                  <span class="tag">Game Developer (Part Time)</span></span
+                ><span class="chev">▾</span>
+              </button>
+              <div class="acc-panel">
+                <div>
+                  <p class="muted" style="margin-top: 0">
+                    November 2023 - Present
+                  </p>
+                  <p>
+                    I am a Game Developer working on several ambitious games.
+                    System design and game design are my key roles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 28px">Technology</h3>
+          <div class="grid cards" style="margin-top: 10px">
+            <article class="card glass">
+              <h4 style="margin-top: 0">Game Development</h4>
+              <ul class="list">
+                <li>Unity</li>
+                <li>Unreal</li>
+              </ul>
+            </article>
+            <article class="card glass">
+              <h4 style="margin-top: 0">Web3D</h4>
+              <ul class="list">
+                <li>Model Viewer</li>
+                <li>Sketchfab API</li>
+                <li>Babylon JS</li>
+                <li>ThreeJS</li>
+              </ul>
+            </article>
+            <article class="card glass">
+              <h4 style="margin-top: 0">Web Development</h4>
+              <ul class="list">
+                <li>Node JS (REST API)</li>
+                <li>React JS (Frontend)</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Games -->
+      <section id="games">
+        <div class="container">
+          <h2 class="section-title">My Games</h2>
+          <div
+            class="grid cards"
+            style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"
+          >
+            <article class="card glass tool-card">
+              <div class="tool-title">Lodescroll</div>
+              <h3 style="margin: 6px 0 0">Lodescroll</h3>
+              <p class="muted" style="margin: 0.25rem 0">Coming Soon</p>
+              <a class="btn-ghost" href="#games">View Details</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section id="tools">
+        <div class="container">
+          <h2 class="section-title">My Tools</h2>
+          <div
+            class="grid cards"
+            style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"
+          >
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/1a4ac9c0-3241-4498-a9f2-7b2dbbf15f3c.webp"
+                alt="Measuring Tool"
+              />
+              <div class="tool-title">Measuring Tool</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/measuring-tool-226340"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/f760899a-eb18-484e-83a3-74a4cb5edf0c.webp"
+                alt="Folder In Hierarchy"
+              />
+              <div class="tool-title">Folder In Hierarchy</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-246762"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/2e1dd7ef-b161-4009-b7d3-117a5240fe34.webp"
+                alt="Folder In Hierarchy Pro"
+              />
+              <div class="tool-title">Folder In Hierarchy Pro</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/folder-in-hierarchy-pro-246760"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/4dfd54fd-edc6-495e-a3cc-96cf4124a76a.webp"
+                alt="Child Search"
+              />
+              <div class="tool-title">Child Search</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/child-search-272636"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/be159b71-f308-4c6e-9f2b-0a13a203250a.webp"
+                alt="Quick Measure"
+              />
+              <div class="tool-title">Quick Measure</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/quick-measure-311569"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/1b26f0fb-dbb3-4a36-aa93-ddb1d0526483.webp"
+                alt="Scene View Bookmarks"
+              />
+              <div class="tool-title">Scene View Bookmarks</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/level-design/scene-view-bookmarks-312499"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/9f83cd78-e3b5-43c7-83ad-70eb0abbd63d.webp"
+                alt="V3Viz"
+              />
+              <div class="tool-title">V3Viz</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/v3viz-312603"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <img
+                src="https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/025b2968-3551-48ff-b6d3-e50e4cca5f64.webp"
+                alt="Searchable Inspector"
+              />
+              <div class="tool-title">Searchable Inspector</div>
+              <div class="muted">Unity Asset</div>
+              <a
+                class="btn-ghost"
+                href="https://assetstore.unity.com/packages/tools/utilities/searchable-inspector-312606"
+                target="_blank"
+                rel="noopener"
+                >View Details</a
+              >
+            </article>
+            <article class="card glass tool-card">
+              <div class="tool-title" style="margin-top: 0">Coming Soon</div>
+              <div class="muted">Under Development</div>
+              <span class="btn-ghost" aria-disabled="true">Coming Soon</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extra Curricular -->
+      <section id="extra">
+        <div class="container">
+          <h2 class="section-title">Extra Curricular</h2>
+          <div class="grid cards">
+            <article class="card glass">
+              <h3 style="margin-top: 0">Achievements</h3>
+              <ul class="list">
+                <li>
+                  <strong>Runners Up in NASA Space App Challenge</strong
+                  ><br /><span class="muted">Bangladesh - 2018</span>
+                </li>
+                <li>
+                  <strong>Champion in Project Show</strong><br /><span
+                    class="muted"
+                    >Premier University IT Fest - 2019</span
+                  >
+                </li>
+                <li>
+                  <strong>6th in Hackathon at Noni Soft</strong><br /><span
+                    class="muted"
+                    >Skill Development for Mobile Game and Application Project -
+                    2018
+                  </span>
+                </li>
+                <li>
+                  <strong>Coach in National woman programming contest</strong
+                  ><br /><span class="muted">2019</span>
+                </li>
+              </ul>
+            </article>
+            <article class="card glass">
+              <h3 style="margin-top: 0">Talks</h3>
+              <ul class="list">
+                <li>
+                  <strong>Introduction to Video Game & XR Technology</strong
+                  ><br /><span class="muted"
+                    >Premier University Chittagong - 2023</span
+                  >
+                </li>
+                <li>
+                  <strong>NASA Space apps Challenge</strong><br /><span
+                    class="muted"
+                    >5th Data Boot Camp on AR/VR - 2024</span
+                  >
+                </li>
+                <li>
+                  <strong>Introduction to Video Game & XR Technology</strong
+                  ><br /><span class="muted"
+                    >Premier University Chittagong - 2025</span
+                  >
+                </li>
+              </ul>
+            </article>
+            <article class="card glass">
+              <h3 style="margin-top: 0">Other Activities</h3>
+              <h4>Hackathons</h4>
+              <ul class="list">
+                <li>NASA Space App Challenge 2018</li>
+                <li>NASA Space App Challenge 2019</li>
+                <li>Hackathon at Noni Soft 2018</li>
+                <li>
+                  Skill Development for Mobile Game and Application Project
+                </li>
+              </ul>
+              <h4>Programming Contests</h4>
+              <ul class="list">
+                <li>SUST IT Carnival 2017</li>
+                <li>CUET IT Fest 2017</li>
+                <li>EDU IT Fest 2018</li>
+                <li>BUET IT Fest 2018</li>
+              </ul>
+              <h4>Project Showcases</h4>
+              <ul class="list">
+                <li>Project Show CUET IT Fest 2019</li>
+                <li>Premier University IT Fest 2019</li>
+              </ul>
+              <h4>Bootcamps & Volunteer Work</h4>
+              <ul class="list">
+                <li>Ethical Hacking boot camp</li>
+                <li>High School Programming Contest 2018</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card glass" style="margin-top: 18px">
+            <h3 style="margin-top: 0">Thank You For Visiting</h3>
+            <p>
+              I appreciate you taking the time to explore my portfolio. Feel
+              free to reach out if you'd like to connect or collaborate on
+              exciting projects. I'm always open to new opportunities and
+              challenges!
+            </p>
+            <p><a class="backtop" href="#top">Back to Top</a></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary">
+      <div class="seg glass" role="tablist">
+        <a href="#home" role="tab" aria-selected="true">Home</a>
+        <a href="#about" role="tab">About</a>
+        <a href="#experience" role="tab">Experience</a>
+        <a href="#games" role="tab">Games</a>
+        <a href="#tools" role="tab">Tools</a>
+        <a href="#extra" role="tab">Extra</a>
+      </div>
+    </nav>
+
+    <script>
+      // Accordion interactions (FAQ-like)
+      document.querySelectorAll(".acc").forEach((acc) => {
+        acc.addEventListener("click", (e) => {
+          const btn = e.target.closest(".acc-btn");
+          if (!btn) return;
+          const item = btn.parentElement;
+          item.classList.toggle("open");
+        });
+      });
+
+      // Bottom Nav active state & section tracking
+      (function () {
+        const links = Array.from(document.querySelectorAll(".bottom-nav a"));
+        if (!links.length) return;
+        const sections = links
+          .map((a) => document.querySelector(a.getAttribute("href")))
+          .filter(Boolean);
+        function setActive(id) {
+          links.forEach((a) => {
+            const on = a.getAttribute("href") === "#" + id;
+            a.classList.toggle("active", on);
+            a.setAttribute("aria-selected", on ? "true" : "false");
+          });
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) setActive(en.target.id);
+            });
+          },
+          { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 }
+        );
+        sections.forEach((s) => io.observe(s));
+        // initial state
+        if (sections[0]) setActive(sections[0].id);
+      })();
+      // prevent accordion toggle when clicking company links
+      document.querySelectorAll(".acc-btn a").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      });
+    </script>
+  </body>
+</html>
