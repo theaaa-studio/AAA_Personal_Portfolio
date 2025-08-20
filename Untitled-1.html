@@ -395,32 +395,10 @@
       }
       /* iOS glass (frosted with a little roughness) */
       body {
-        background: radial-gradient(
-            900px 900px at 10% -10%,
-            #e8f0ff 0,
-            rgba(232, 240, 255, 0) 50%
-          ),
-          radial-gradient(
-            800px 800px at 110% 0%,
-            #e6fff7 0,
-            rgba(230, 255, 247, 0) 50%
-          ),
-          linear-gradient(#f7f8fb, #f7f8fb);
-        background-attachment: fixed;
+        background: var(--bg);
       }
       body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.08;
-        mix-blend-mode: normal;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.06) 1px,
-            transparent 1px
-          ),
-          linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-        background-size: 3px 3px, 3px 3px;
+        content: none;
       }
 
       .glass {
@@ -527,6 +505,10 @@
         color: var(--muted);
         opacity: 0.9;
       }
+      /* solid background override */
+      .glow {
+        display: none !important;
+      }
     </style>
   </head>
   <body id="top">
@@ -545,9 +527,9 @@
           </div>
           <div class="hero-card glass">
             <h3 class="muted motto" style="margin: 0 0 8px">
-              Build, Break, Rebuild
+              "Build, Break, Rebuild"
             </h3>
-            <p class="motto-sub" style="margin: 0">Build, Break, Rebuild</p>
+            <p class="motto-sub" style="margin: 0">-The AAA</p>
           </div>
         </div>
       </section>
