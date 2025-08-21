@@ -35,12 +35,13 @@
         font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
           sans-serif;
       }
+
       a {
         color: var(--text);
         text-decoration: none;
       }
       .container {
-        width: min(var(--max), 92%);
+        width: min(var(--max), 100%);
         margin-inline: auto;
       }
 
@@ -119,10 +120,12 @@
       }
 
       /* HERO */
+      /* HERO */
       .hero {
         position: relative;
         overflow: hidden;
       }
+
       .hero-wrap {
         display: grid;
         grid-template-columns: 1.1fr 0.9fr;
@@ -130,11 +133,13 @@
         align-items: center;
         padding: 48px 0;
       }
+
       h1 {
         font-size: clamp(36px, 6vw, 60px);
         line-height: 1.05;
         margin: 0 0 12px;
       }
+
       .eyebrow {
         color: var(--brand-2);
         font-weight: 600;
@@ -142,9 +147,11 @@
         text-transform: uppercase;
         font-size: 0.84rem;
       }
+
       .sub {
         color: var(--muted);
       }
+
       .hero-card {
         position: relative;
         background: linear-gradient(
@@ -158,6 +165,7 @@
         box-shadow: var(--shadow);
         text-align: center;
       }
+
       .pill {
         display: inline-block;
         padding: 10px 14px;
@@ -165,6 +173,91 @@
         border-radius: 999px;
         color: var(--muted);
         font-weight: 600;
+      }
+
+      /* Hero image placeholder styles */
+      .hero-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .hero-image-placeholder {
+        width: 160px;
+        height: 160px;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(109, 40, 217, 0.1) 0%,
+          rgba(8, 145, 178, 0.1) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        color: var(--brand);
+        box-shadow: 0 12px 32px rgba(2, 6, 23, 0.15),
+          inset 0 1px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .hero-image-placeholder:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.25),
+          inset 0 1px rgba(255, 255, 255, 0.2);
+      }
+
+      /* When a real hero image is added */
+      .hero-image img {
+        width: 160px;
+        height: 160px;
+        border-radius: 24px;
+        object-fit: cover;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 12px 32px rgba(2, 6, 23, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hero-image img:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.25);
+      }
+
+      /* Motto styling */
+      .motto {
+        font-weight: 800;
+        font-size: clamp(22px, 3.5vw, 28px);
+        letter-spacing: 0.02em;
+      }
+
+      .motto-sub {
+        color: var(--muted);
+        opacity: 0.9;
+      }
+
+      /* Pill hover behavior */
+      .pill {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .pill.glass {
+        box-shadow: none;
+        background: #ffffff;
+      }
+
+      .pill:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* SECTIONS */
@@ -665,30 +758,213 @@
         }
       }
     </style>
+
+    <style>
+      /* -------------------------------------------------------------
+     Goal: Add vertical space BELOW the top bar/header (not between
+           background boxes). This pushes the FIRST content section
+           down so it clears a fixed/sticky navbar.
+     How:  Paste at the end of your CSS and tweak --topbar-space.
+  -------------------------------------------------------------- */
+
+      :root {
+        /* Space between the top bar and the first content block */
+        --topbar-space: 72px; /* adjust to your header height */
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --topbar-space: 56px;
+        }
+      }
+
+      /* 1) Common patterns: fixed/sticky header followed by <main> */
+      header.fixed + main,
+      header.sticky + main,
+      header.is-fixed + main,
+      .navbar.fixed-top + main,
+      .navbar.navbar-fixed-top + main,
+      #topbar + main {
+        margin-top: var(--topbar-space);
+      }
+
+      /* 2) If your layout starts with a <section> instead of <main> */
+      header.fixed + section:first-of-type,
+      header.sticky + section:first-of-type,
+      header.is-fixed + section:first-of-type,
+      .navbar.fixed-top + section:first-of-type,
+      .navbar.navbar-fixed-top + section:first-of-type,
+      #topbar + section:first-of-type,
+      #header + section:first-of-type,
+      .site-header + section:first-of-type {
+        margin-top: var(--topbar-space);
+      }
+
+      /* 3) Wrapper-based layouts (main content wrapped in a container) */
+      header.fixed + .content,
+      header.sticky + .content,
+      .navbar.fixed-top + .content,
+      #topbar + .content,
+      .site-header + .content-wrapper,
+      .site-header + .wrapper {
+        padding-top: var(--topbar-space);
+      }
+
+      /* 4) Smooth anchor jumps: avoid anchors hiding under the top bar */
+      html {
+        scroll-padding-top: var(--topbar-space);
+      }
+      [id] {
+        scroll-margin-top: var(--topbar-space);
+      }
+
+      /* 5) Utility class you can drop after the header if you prefer */
+      .topbar-spacer {
+        height: var(--topbar-space);
+      }
+
+      /* set the component scale once */
+      .profile-photo {
+        --s: 0.7; /* 50% */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: calc(12px * var(--s));
+        width: 100%;
+      }
+
+      .photo-placeholder {
+        width: calc(256px * var(--s));
+        height: calc(256px * var(--s));
+        border: calc(3px * var(--s)) solid var(--stroke);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        display: flex; /* fine to keep flex */
+        align-items: flex-start; /* top align if you like */
+        justify-content: center;
+        font-size: calc(36px * var(--s));
+        color: var(--muted);
+        box-shadow: 0 calc(8px * var(--s)) calc(20px * var(--s))
+          rgba(2, 6, 23, 0.12);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        overflow: hidden;
+      }
+
+      /* KEY PART: make the image follow the container size */
+      .photo-placeholder > img {
+        width: 100%;
+        height: 100%;
+        display: block; /* removes inline-gap */
+        object-fit: cover; /* fill the circle (crops edges) */
+        object-position: top center; /* same framing you wanted */
+      }
+
+      .photo-placeholder:hover {
+        transform: translateY(calc(-3px * var(--s)));
+        box-shadow: 0 calc(15px * var(--s)) calc(35px * var(--s))
+          rgba(2, 6, 23, 0.18);
+      }
+
+      /* Personal Info → Social row inside kv box */
+      /* --- Hover pop for Personal Info rows --- */
+      .kv .row {
+        border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: var(--surface, rgba(0, 0, 0, 0.02));
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          background-color 0.18s ease, border-color 0.18s ease;
+        will-change: transform;
+      }
+
+      /* Pop on hover/focus like other cards */
+      .kv .row:hover,
+      .kv .row:focus-within {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        background: var(--surface-hover, rgba(0, 0, 0, 0.04));
+        border-color: var(--accent, rgba(0, 0, 0, 0.18));
+      }
+
+      /* Keep label aligned when the row pops */
+      .kv .row .label {
+        font-weight: 600;
+      }
+
+      /* Social row: no visible label, full-width centered icons */
+      .kv .row.no-label .label {
+        display: none;
+      }
+      .kv .row.no-label .value {
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Center icons horizontally and allow wrapping */
+      .kv .row.no-label .value .social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+      }
+
+      /* --- My Experience: two-column layout --- */
+      .experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+      .experience-grid .col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .experience-grid .col > .muted {
+        margin-top: 0;
+      }
+
+      /* Stack on mobile */
+      @media (max-width: 900px) {
+        .experience-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body id="top">
     <main>
       <!-- Hero -->
+      <!-- Hero -->
       <section id="home" class="hero">
-        <div class="glow" aria-hidden="true">
-          <div class="g1"></div>
-          <div class="g2"></div>
-        </div>
-        <div class="container hero-wrap">
-          <div>
-            <div class="eyebrow">Hello, I am</div>
-            <h1>The AAA</h1>
-            <div class="pill glass">Abid Al Aqib</div>
+        <div class="container">
+          <div class="glow" aria-hidden="true">
+            <div class="g1"></div>
+            <div class="g2"></div>
           </div>
-          <div class="hero-card glass">
-            <h3 class="muted motto" style="margin: 0 0 8px">
-              "Build, Break, Rebuild"
-            </h3>
-            <p class="motto-sub" style="margin: 0">-The AAA</p>
+          <div class="container hero-wrap">
+            <div>
+              <div class="eyebrow">Hello, I am</div>
+              <h1>The AAA</h1>
+              <div class="pill glass">Abid Al Aqib</div>
+            </div>
+            <div class="hero-card glass">
+              <div class="hero-image">
+                <div class="hero-image-placeholder">
+                  <img src="assets/imgs/theaaa2.ico" alt="Abid Al Aqib" />
+                </div>
+              </div>
+              <h3 class="muted motto" style="margin: 16px 0 8px">
+                "Build, Break, Rebuild"
+              </h3>
+              <p class="motto-sub" style="margin: 0">-The AAA</p>
+            </div>
           </div>
         </div>
       </section>
-
       <!-- About -->
       <section id="about">
         <div class="container">
@@ -746,7 +1022,14 @@
             <div class="about-right">
               <article class="card glass">
                 <div>
-                  <h3 style="margin-top: 0">Personal Info</h3>
+                  <div class="profile-photo">
+                    <div class="photo-placeholder">
+                      <img src="assets/imgs/me 2.png" alt="Abid Al Aqib" />
+                    </div>
+                  </div>
+
+                  <h3 style="margin-top: 18px">Personal Info</h3>
+
                   <div class="kv">
                     <div class="row">
                       <div class="label">Name</div>
@@ -764,70 +1047,82 @@
                       <div class="label">Address</div>
                       <div class="value">Chattogram, Bangladesh.</div>
                     </div>
-                  </div>
-                  <div class="social" aria-label="Social links">
-                    <a
-                      class="icon-btn"
-                      data-ic="facebook"
-                      href="https://www.facebook.com/abid.al.aqib/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Facebook"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="x"
-                      href="https://twitter.com/abid_al_aqib"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="X (Twitter)"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="youtube"
-                      href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="YouTube"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="linkedin"
-                      href="https://www.linkedin.com/in/abid-al-aqib/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="LinkedIn"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="instagram"
-                      href="https://www.instagram.com/abid.al.aqib/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Instagram"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="github"
-                      href="https://github.com/theaaa-studio"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="GitHub"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://assetstore.unity.com/publishers/70358"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="The AAA Asset Store"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="mail"
-                      href="mailto:abidaqibcse@gmail.com"
-                      aria-label="Email"
-                    ></a>
+
+                    <!-- Social icons in a boxed row, centered, no label text -->
+                    <div
+                      class="row social-row no-label"
+                      aria-label="Social links"
+                    >
+                      <div class="label"></div>
+                      <div class="value">
+                        <div class="social">
+                          <a
+                            class="icon-btn"
+                            data-ic="facebook"
+                            href="https://www.facebook.com/abid.al.aqib/"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Facebook"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="x"
+                            href="https://twitter.com/abid_al_aqib"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="X (Twitter)"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="youtube"
+                            href="https://www.youtube.com/channel/UCGzh96LWRMscK7jdxRclj0Q"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="YouTube"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="linkedin"
+                            href="https://www.linkedin.com/in/abid-al-aqib/"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="LinkedIn"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="instagram"
+                            href="https://www.instagram.com/abid.al.aqib/"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Instagram"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="github"
+                            href="https://github.com/theaaa-studio"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="GitHub"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="globe"
+                            href="https://assetstore.unity.com/publishers/70358"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="The AAA Asset Store"
+                          ></a>
+                          <a
+                            class="icon-btn"
+                            data-ic="mail"
+                            href="mailto:abidaqibcse@gmail.com"
+                            aria-label="Email"
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- /NEW -->
                   </div>
                 </div>
               </article>
@@ -835,7 +1130,7 @@
               <article class="card glass">
                 <h3 style="margin: 18px 0 0">Education</h3>
                 <div class="acc">
-                  <div class="acc-item open">
+                  <div class="acc-item">
                     <button class="acc-btn" type="button">
                       <span
                         ><strong>B.Sc in CSE</strong> —
@@ -851,13 +1146,6 @@
                           Finished my Bachelor of science degree at Computer
                           Science and Engineering from Premier University
                           Chittagong.
-                        </p>
-                        <p>
-                          In my university life not only I studied I was also
-                          involved with many cultural club, such as cultural
-                          club, Programming club etc. Because of that I improve
-                          my communication skill also build a good network with
-                          motivated people.
                         </p>
                       </div>
                     </div>
@@ -899,184 +1187,6 @@
         </div>
       </section>
 
-      <!-- Experience -->
-      <section id="experience">
-        <div class="container">
-          <h2 class="section-title">My Experience</h2>
-
-          <h3 class="muted" style="margin-top: 0">Personal Work</h3>
-          <div class="acc" style="margin-bottom: 18px">
-            <div class="acc-item open">
-              <button class="acc-btn" type="button">
-                <span
-                  ><strong>The AAA.</strong>
-                  <span class="tag">Founder</span></span
-                ><span class="chev">▾</span>
-              </button>
-              <div class="acc-panel">
-                <div>
-                  <p>
-                    All my products publish in my publication called The AAA.
-                  </p>
-                  <div class="social" aria-label="The AAA social">
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://assetstore.unity.com/publishers/70358"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Asset Store"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="github"
-                      href="https://github.com/theaaa-studio"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="GitHub"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="facebook"
-                      href="https://www.facebook.com/theaaa.studio"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Facebook"
-                    ></a>
-                    <a
-                      class="icon-btn"
-                      data-ic="linkedin"
-                      href="https://www.linkedin.com/company/the-aaa/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="LinkedIn"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="acc-item">
-              <button class="acc-btn" type="button">
-                <span
-                  ><strong>Matra Soft.</strong>
-                  <span class="tag">Co-founder</span></span
-                ><span class="chev">▾</span>
-              </button>
-              <div class="acc-panel">
-                <div>
-                  <p>
-                    I have experience working with teams. I work as and
-                    Programmer & Co-founder at Matra Soft. And some of my
-                    friends founded this team.
-                  </p>
-                  <div class="social" aria-label="Matra Soft social">
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://matra-soft.com/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Website"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h3 class="muted">Professional Work</h3>
-          <div class="acc">
-            <div class="acc-item open">
-              <button class="acc-btn" type="button">
-                <span
-                  ><strong>Dreamerz Lab LTD.</strong>
-                  <span class="tag">Lead Developer</span></span
-                ><span class="chev">▾</span>
-              </button>
-              <div class="acc-panel">
-                <div>
-                  <p class="muted" style="margin-top: 0">June 2022 - Present</p>
-                  <p>
-                    As the Lead Developer, I am responsible for managing various
-                    projects and overseeing communication and strategy with
-                    clients.
-                  </p>
-                  <div class="social" aria-label="Dreamerz Lab website">
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://dreamerzlab.com/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Website"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="acc-item">
-              <button class="acc-btn" type="button">
-                <span
-                  ><strong>Dreamerz Lab LTD.</strong>
-                  <span class="tag">Game & XR Developer</span></span
-                ><span class="chev">▾</span>
-              </button>
-              <div class="acc-panel">
-                <div>
-                  <p class="muted" style="margin-top: 0">
-                    June 2020 - May 2022
-                  </p>
-                  <p>
-                    I worked as a Game & XR Developer. As a Game & XR Developer,
-                    I worked on several casual and hyper-casual games and also
-                    work in several AR & VR software and games.
-                  </p>
-                  <div class="social" aria-label="Dreamerz Lab website">
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://dreamerzlab.com/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Website"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="acc-item">
-              <button class="acc-btn" type="button">
-                <span
-                  ><strong>Vidribute.</strong>
-                  <span class="tag">Game Developer (Part Time)</span></span
-                ><span class="chev">▾</span>
-              </button>
-              <div class="acc-panel">
-                <div>
-                  <p class="muted" style="margin-top: 0">
-                    November 2023 - Present
-                  </p>
-                  <p>
-                    I am a Game Developer working on several ambitious games.
-                    System design and game design are my key roles.
-                  </p>
-                  <div class="social" aria-label="Vidribute website">
-                    <a
-                      class="icon-btn"
-                      data-ic="globe"
-                      href="https://vidribute.com/"
-                      target="_blank"
-                      rel="noopener"
-                      aria-label="Website"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Technology -->
       <section id="technology">
         <div class="container">
@@ -1105,6 +1215,219 @@
               </div>
             </article>
           </div>
+        </div>
+      </section>
+      <!-- Experience -->
+      <section id="experience">
+        <div class="container">
+          <h2 class="section-title">My Experience</h2>
+
+          <!-- 2-column grid using inline styles so you don't need extra CSS -->
+          <div
+            class="experience-grid"
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 18px;
+              align-items: start;
+            "
+          >
+            <!-- LEFT: Personal Work (base .acc) -->
+            <div
+              class="col"
+              style="display: flex; flex-direction: column; gap: 12px"
+            >
+              <h3 class="muted" style="margin-top: 0">Personal Work</h3>
+              <div class="acc">
+                <div class="acc-item open">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>The AAA.</strong>
+                      <span class="tag">Founder</span></span
+                    >
+                    <span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p>
+                        All my products publish in my publication called The
+                        AAA.
+                      </p>
+                      <div class="social" aria-label="The AAA social">
+                        <a
+                          class="icon-btn"
+                          data-ic="globe"
+                          href="https://assetstore.unity.com/publishers/70358"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Asset Store"
+                        ></a>
+                        <a
+                          class="icon-btn"
+                          data-ic="github"
+                          href="https://github.com/theaaa-studio"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="GitHub"
+                        ></a>
+                        <a
+                          class="icon-btn"
+                          data-ic="facebook"
+                          href="https://www.facebook.com/theaaa.studio"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Facebook"
+                        ></a>
+                        <a
+                          class="icon-btn"
+                          data-ic="linkedin"
+                          href="https://www.linkedin.com/company/the-aaa/"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="LinkedIn"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Matra Soft.</strong>
+                      <span class="tag">Co-founder</span></span
+                    >
+                    <span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p>
+                        I have experience working with teams. I work as and
+                        Programmer &amp; Co-founder at Matra Soft. And some of
+                        my friends founded this team.
+                      </p>
+                      <div class="social" aria-label="Matra Soft social">
+                        <a
+                          class="icon-btn"
+                          data-ic="globe"
+                          href="https://matra-soft.com/"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Website"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: Professional Work (base .acc) -->
+            <div
+              class="col"
+              style="display: flex; flex-direction: column; gap: 12px"
+            >
+              <h3 class="muted" style="margin-top: 0">Professional Work</h3>
+              <div class="acc">
+                <div class="acc-item open">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Dreamerz Lab LTD.</strong>
+                      <span class="tag">Lead Developer</span></span
+                    >
+                    <span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">
+                        June 2022 - Present
+                      </p>
+                      <p>
+                        As the Lead Developer, I am responsible for managing
+                        various projects and overseeing communication and
+                        strategy with clients.
+                      </p>
+                      <div class="social" aria-label="Dreamerz Lab website">
+                        <a
+                          class="icon-btn"
+                          data-ic="globe"
+                          href="https://dreamerzlab.com/"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Website"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Dreamerz Lab LTD.</strong>
+                      <span class="tag">Game &amp; XR Developer</span></span
+                    >
+                    <span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">
+                        June 2020 - May 2022
+                      </p>
+                      <p>
+                        I worked as a Game &amp; XR Developer. As a Game &amp;
+                        XR Developer, I worked on several casual and
+                        hyper-casual games and also work in several AR &amp; VR
+                        software and games.
+                      </p>
+                      <div class="social" aria-label="Dreamerz Lab website">
+                        <a
+                          class="icon-btn"
+                          data-ic="globe"
+                          href="https://dreamerzlab.com/"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Website"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                  <button class="acc-btn" type="button">
+                    <span
+                      ><strong>Vidribute.</strong>
+                      <span class="tag">Game Developer (Part Time)</span></span
+                    >
+                    <span class="chev">▾</span>
+                  </button>
+                  <div class="acc-panel">
+                    <div>
+                      <p class="muted" style="margin-top: 0">
+                        November 2023 - Present
+                      </p>
+                      <p>
+                        I am a Game Developer working on several ambitious
+                        games. System design and game design are my key roles.
+                      </p>
+                      <div class="social" aria-label="Vidribute website">
+                        <a
+                          class="icon-btn"
+                          data-ic="globe"
+                          href="https://vidribute.com/"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Website"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /experience-grid -->
         </div>
       </section>
 
@@ -1400,7 +1723,7 @@
 
       <section id="thanks">
         <div class="container">
-          <article class="card glass">
+          <article class="card glass" style="text-align: center">
             <h3 style="margin-top: 0">Thank You For Visiting</h3>
             <p>
               I appreciate you taking the time to explore my portfolio. Feel
@@ -1418,8 +1741,9 @@
       <div class="seg glass" role="tablist">
         <a href="#home" role="tab" aria-selected="true">Home</a>
         <a href="#about" role="tab">About</a>
-        <a href="#experience" role="tab">Experience</a>
         <a href="#technology" role="tab">Technology</a>
+        <a href="#experience" role="tab">Experience</a>
+
         <a href="#games" role="tab">Games</a>
         <a href="#tools" role="tab">Tools</a>
         <a href="#extra" role="tab">Extra</a>
