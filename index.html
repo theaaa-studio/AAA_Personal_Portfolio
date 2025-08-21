@@ -1119,6 +1119,11 @@
         object-fit: cover; /* fill without distortion */
         display: block;
       }
+
+      /* make all other-activity cards use normal width */
+      #extra .cards article:last-child {
+        grid-column: auto;
+      }
     </style>
   </head>
   <body id="top">
@@ -1825,123 +1830,41 @@
           <h2 class="section-title">Extra Curricular</h2>
           <div class="grid cards">
             <article class="card glass">
-              <h3 style="margin-top: 0">Achievements</h3>
-              <div class="acc">
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>Runners Up in NASA Space App Challenge</strong>
-                      <span class="tag">Bangladesh — 2018</span></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>Champion in Project Show</strong>
-                      <span class="tag"
-                        >Premier University IT Fest — 2019</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>6th in Hackathon at Noni Soft</strong>
-                      <span class="tag"
-                        >Skill Development for Mobile Game and Application
-                        Project — 2018</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>Coach</strong>
-                      <span class="tag"
-                        >National woman programming contest — 2018</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-              </div>
-            </article>
-            <article class="card glass">
-              <h3 style="margin-top: 0">Talks</h3>
-              <div class="acc">
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong
-                        >Introduction to Video Game & XR Technology</strong
-                      >
-                      <span class="tag"
-                        >Premier University Chittagong — 2023</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong>NASA Space apps Challenge</strong>
-                      <span class="tag"
-                        >5th Data Boot Camp on AR/VR — 2024</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button">
-                    <span
-                      ><strong
-                        >Introduction to Video Game & XR Technology</strong
-                      >
-                      <span class="tag"
-                        >Premier University Chittagong — 2025</span
-                      ></span
-                    ><span class="chev">▾</span>
-                  </button>
-                  <div class="acc-panel"><div></div></div>
-                </div>
-              </div>
-            </article>
-            <article class="card glass">
-              <h3 style="margin-top: 0">Other Activities</h3>
-              <h4>Hackathons</h4>
+              <h3 style="margin-top: 0">Hackathons</h3>
               <div class="chips">
-                <span class="chip">NASA Space App Challenge 2018</span
-                ><span class="chip">NASA Space App Challenge 2019</span
-                ><span class="chip">Hackathon at Noni Soft 2018</span
-                ><span class="chip"
+                <span class="chip">NASA Space App Challenge 2018</span>
+                <span class="chip">NASA Space App Challenge 2019</span>
+                <span class="chip">Hackathon at Noni Soft 2018</span>
+                <span class="chip"
                   >Skill Development for Mobile Game and Application
                   Project</span
                 >
               </div>
-              <h4>Programming Contests</h4>
+            </article>
+
+            <article class="card glass">
+              <h3 style="margin-top: 0">Programming Contests</h3>
               <div class="chips">
-                <span class="chip">SUST IT Carnival 2017</span
-                ><span class="chip">CUET IT Fest 2017</span
-                ><span class="chip">EDU IT Fest 2018</span
-                ><span class="chip">BUET IT Fest 2018</span>
+                <span class="chip">SUST IT Carnival 2017</span>
+                <span class="chip">CUET IT Fest 2017</span>
+                <span class="chip">EDU IT Fest 2018</span>
+                <span class="chip">BUET IT Fest 2018</span>
               </div>
-              <h4>Project Showcases</h4>
+            </article>
+
+            <article class="card glass">
+              <h3 style="margin-top: 0">Project Showcases</h3>
               <div class="chips">
-                <span class="chip">Project Show CUET IT Fest 2019</span
-                ><span class="chip">Premier University IT Fest 2019</span>
+                <span class="chip">Project Show CUET IT Fest 2019</span>
+                <span class="chip">Premier University IT Fest 2019</span>
               </div>
-              <h4>Bootcamps & Volunteer Work</h4>
+            </article>
+
+            <article class="card glass">
+              <h3 style="margin-top: 0">Bootcamps & Volunteer Work</h3>
               <div class="chips">
-                <span class="chip">Ethical Hacking boot camp</span
-                ><span class="chip">High School Programming Contest 2018</span>
+                <span class="chip">Ethical Hacking boot camp</span>
+                <span class="chip">High School Programming Contest 2018</span>
               </div>
             </article>
           </div>
