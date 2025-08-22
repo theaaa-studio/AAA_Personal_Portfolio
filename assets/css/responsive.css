@@ -206,6 +206,99 @@ img {
     }
 }
 
+/* MOBILE: reorder about columns and collapse long article content with Read more */
+@media (max-width: 900px) {
+
+    /* switch the about layout to a stacked flex flow so we can reorder children */
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ensure personal info/sidebar appears first */
+    .about-right {
+        order: -1;
+        /* keep it centered as before */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Make common education/accordion containers come next if present */
+    .about-grid .education,
+    .about-grid #education,
+    .about-grid .acc,
+    .about-grid .education-panel {
+        order: 0;
+    }
+
+    /* Put the main article/content last */
+    .about-grid .about-article,
+    .about-grid article,
+    .about-grid .main-article {
+        order: 1;
+    }
+
+    /* COLLAPSE LONG ARTICLE (mobile only) */
+    .about-article,
+    .about-article .article-body,
+    .about-grid article,
+    .main-article {
+        position: relative;
+    }
+
+    /* collapsed state — adjust max-height to taste */
+    .about-article.collapsed,
+    .about-grid article.collapsed,
+    .main-article.collapsed {
+        max-height: 180px;
+        overflow: hidden;
+    }
+
+    /* subtle fade at bottom to hint more content */
+    .about-article.collapsed::after,
+    .about-grid article.collapsed::after,
+    .main-article.collapsed::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 64px;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(247, 248, 251, 0.95) 60%, rgba(247, 248, 251, 1) 100%);
+    }
+
+    /* Read more button styling */
+    .read-more-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background: var(--brand, #6d28d9);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        border: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .about-article .read-more-wrap,
+    .about-grid article .read-more-wrap,
+    .main-article .read-more-wrap {
+        display: flex;
+        justify-content: center;
+        padding-top: 8px;
+    }
+
+    /* expanded state removes height restriction and fade */
+    .about-article.expanded,
+    .about-grid article.expanded,
+    .main-article.expanded {
+        max-height: none;
+    }
+}
+
 @media (max-width: 500px) {
 
     /* Tighter padding on very small screens */
