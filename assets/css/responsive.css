@@ -1,0 +1,184 @@
+/* Mobile / responsive tweaks */
+
+:root {
+    --container-padding: 20px;
+    --max-width: 1100px;
+}
+
+html,
+body {
+    box-sizing: border-box
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+/* Make images scale */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+/* Make tool cards and grids wrap cleanly */
+.grid {
+    gap: 16px;
+}
+
+/* Default two-column about layout reduced on small screens below */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 18px;
+}
+
+/* Hero: allow stacking */
+.hero-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* hero card image sizing */
+.hero-image img {
+    width: 160px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Profile photo */
+.profile-photo .photo-placeholder img {
+    width: 160px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Tool cards - ensure images fit */
+.tool-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Key-value rows */
+.kv .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Social icons spacing */
+.social .icon-btn {
+    display: inline-block;
+    margin: 4px;
+    width: 36px;
+    height: 36px;
+}
+
+/* Accordion panels full width on small screens */
+.acc-panel {
+    width: 100%;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+
+    /* Stack about columns */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack hero content */
+    .hero-wrap {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    /* Experience grid -> single column */
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tools & cards: use single column flow or auto-fit */
+    .grid.cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    /* Tool cards stack */
+    .tool-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: start;
+    }
+
+    /* Reduce hero/profile image */
+    .hero-image img,
+    .profile-photo .photo-placeholder img {
+        width: 128px;
+    }
+
+    /* KV rows stack vertically for narrow devices */
+    .kv .row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    /* Tighter padding on very small screens */
+    :root {
+        --container-padding: 12px;
+    }
+
+    /* Slightly smaller images & fonts */
+    .hero-image img,
+    .profile-photo .photo-placeholder img {
+        width: 96px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    /* Chips wrap well */
+    .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    /* Social icons slightly smaller */
+    .social .icon-btn {
+        width: 32px;
+        height: 32px;
+        margin: 3px;
+    }
+
+    /* Ensure tool-card buttons are full width */
+    .tool-actions a {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+}
