@@ -59,7 +59,7 @@ img {
 
 /* Profile photo */
 .profile-photo .photo-placeholder img {
-    width: 160px;
+    width: 256px;
     height: auto;
     border-radius: 8px;
 }
@@ -142,6 +142,68 @@ img {
         align-items: flex-start;
         gap: 6px;
     }
+
+    /* make the profile photo larger, centered and sit above the info */
+    .about-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-right .profile-photo {
+        --s: 1;
+        /* use full size in the stacked column */
+        max-width: 240px;
+        width: 100%;
+        margin: 0 0 16px;
+        order: -1;
+        /* place photo before the card content inside about-right */
+        justify-content: center;
+    }
+
+    .about-right .photo-placeholder {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        border-width: 3px;
+        overflow: hidden;
+    }
+
+    .about-right .photo-placeholder>img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    /* Ensure profile photo is horizontally centered in all layouts */
+    .about-right .profile-photo {
+        display: flex;
+        justify-content: center;
+        /* center content horizontally */
+        align-items: center;
+        /* center content vertically if needed */
+        margin-inline: auto;
+        /* center the whole block */
+        text-align: center;
+    }
+
+    /* Make the placeholder itself center as a block */
+    .about-right .photo-placeholder {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* keep the image centered and filling its container */
+    .about-right .photo-placeholder>img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        object-fit: cover;
+        object-position: center center;
+    }
 }
 
 @media (max-width: 500px) {
@@ -180,5 +242,18 @@ img {
         display: inline-block;
         width: 100%;
         text-align: center;
+    }
+
+    .about-right .profile-photo,
+    .about-right .photo-placeholder {
+        max-width: 160px;
+        width: 100%;
+        height: auto;
+    }
+
+    .about-right .photo-placeholder {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 12px;
     }
 }
