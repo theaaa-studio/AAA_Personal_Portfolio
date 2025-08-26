@@ -35,13 +35,6 @@ img {
     gap: 16px;
 }
 
-/* Default two-column about layout reduced on small screens below */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 18px;
-}
-
 /* Hero: allow stacking */
 .hero-wrap {
     display: flex;
@@ -315,38 +308,107 @@ img {
     body {
         font-size: 15px;
     }
+}
 
-    /* Chips wrap well */
-    .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
+/* Bottom Nav Mobile Fixes */
+.bottom-nav {
+    width: 95%;
+    /* Give some margin on sides */
+    max-width: 600px;
+    /* Limit maximum width */
+}
+
+.bottom-nav .seg {
+    width: 100%;
+    padding: 10px 15px;
+    justify-content: space-between;
+    /* Spread items evenly */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    overflow-x: auto;
+    /* Allow horizontal scroll if needed */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scroll on iOS */
+}
+
+/* Make nav items smaller on mobile */
+.bottom-nav a {
+    font-size: 14px;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    padding: 6px 8px;
+}
+
+/* Hide scrollbar but keep functionality */
+.bottom-nav .seg::-webkit-scrollbar {
+    display: none;
+}
+
+.bottom-nav .seg {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Bottom Nav with Icons */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 600px;
+    z-index: 100;
+}
+
+.bottom-nav .seg {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+    gap: 8px;
+}
+
+.bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    padding: 8px 12px;
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+}
+
+.bottom-nav a i {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Mobile styles - hide text, show only icons */
+@media (max-width: 480px) {
+    .bottom-nav {
+        width: 98%;
+        bottom: 10px;
     }
 
-    /* Social icons slightly smaller */
-    .social .icon-btn {
-        width: 32px;
-        height: 32px;
-        margin: 3px;
+    .bottom-nav .seg {
+        padding: 8px;
     }
 
-    /* Ensure tool-card buttons are full width */
-    .tool-actions a {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
+    .bottom-nav a {
+        padding: 8px;
+        min-width: 40px;
     }
 
-    .about-right .profile-photo,
-    .about-right .photo-placeholder {
-        max-width: 160px;
-        width: 100%;
-        height: auto;
+    .bottom-nav a span {
+        display: none;
+        /* Hide text on mobile */
     }
 
-    .about-right .photo-placeholder {
-        width: 160px;
-        height: 160px;
-        margin-bottom: 12px;
+    .bottom-nav a i {
+        font-size: 18px;
+        margin-bottom: 0;
+        /* Remove bottom margin since there's no text */
     }
 }
