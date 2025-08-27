@@ -900,7 +900,7 @@ html {
 
 /* set the component scale once */
 .profile-photo {
-    --s: 0.7;
+    --s: 0.9;
     /* 50% */
     display: flex;
     justify-content: center;
